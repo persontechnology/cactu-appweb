@@ -31,6 +31,7 @@ class ComposerStaticInit72a9be99053e866cd05efc3e40fc2669
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
+        '86b1a3c81386576820df6ff03395c2c7' => __DIR__ . '/..' . '/kutia-software-company/larafirebase/src/Helpers/All.php',
         'a1cfe24d14977df6878b9bf804af2d1c' => __DIR__ . '/..' . '/nunomaduro/collision/src/Adapters/Phpunit/Autoload.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         'c379e2a4ec3735f6c4915556c8c81813' => __DIR__ . '/..' . '/rap2hpoutre/fast-excel/src/functions/fastexcel.php',
@@ -148,6 +149,7 @@ class ComposerStaticInit72a9be99053e866cd05efc3e40fc2669
         ),
         'K' => 
         array (
+            'Kutia\\Larafirebase\\' => 19,
             'Knp\\Snappy\\' => 11,
         ),
         'I' => 
@@ -216,11 +218,11 @@ class ComposerStaticInit72a9be99053e866cd05efc3e40fc2669
         ),
         'Yajra\\DataTables\\' => 
         array (
-            0 => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src',
-            1 => __DIR__ . '/..' . '/yajra/laravel-datatables-html/src',
+            0 => __DIR__ . '/..' . '/yajra/laravel-datatables-buttons/src',
+            1 => __DIR__ . '/..' . '/yajra/laravel-datatables-editor/src',
             2 => __DIR__ . '/..' . '/yajra/laravel-datatables-fractal/src',
-            3 => __DIR__ . '/..' . '/yajra/laravel-datatables-editor/src',
-            4 => __DIR__ . '/..' . '/yajra/laravel-datatables-buttons/src',
+            3 => __DIR__ . '/..' . '/yajra/laravel-datatables-html/src',
+            4 => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src',
         ),
         'Whoops\\' => 
         array (
@@ -396,8 +398,8 @@ class ComposerStaticInit72a9be99053e866cd05efc3e40fc2669
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -478,6 +480,10 @@ class ComposerStaticInit72a9be99053e866cd05efc3e40fc2669
         'Laravel\\Sail\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/sail/src',
+        ),
+        'Kutia\\Larafirebase\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kutia-software-company/larafirebase/src',
         ),
         'Knp\\Snappy\\' => 
         array (
@@ -602,23 +608,28 @@ class ComposerStaticInit72a9be99053e866cd05efc3e40fc2669
 
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
+        'App\\DataTables\\CartaDataTable' => __DIR__ . '/../..' . '/app/DataTables/CartaDataTable.php',
+        'App\\DataTables\\Carta\\NinioDataTable' => __DIR__ . '/../..' . '/app/DataTables/Carta/NinioDataTable.php',
         'App\\DataTables\\ComunidadDataTable' => __DIR__ . '/../..' . '/app/DataTables/ComunidadDataTable.php',
         'App\\DataTables\\NinioDataTable' => __DIR__ . '/../..' . '/app/DataTables/NinioDataTable.php',
         'App\\DataTables\\UserDataTable' => __DIR__ . '/../..' . '/app/DataTables/UserDataTable.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Clases\\LaravelValidatorEc' => __DIR__ . '/../..' . '/app/Http/Clases/LaravelValidatorEc.php',
         'App\\Http\\Clases\\ValidadorEc' => __DIR__ . '/../..' . '/app/Http/Clases/ValidadorEc.php',
+        'App\\Http\\Controllers\\Api\\ResponderCarta' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/ResponderCarta.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
+        'App\\Http\\Controllers\\CartaController' => __DIR__ . '/../..' . '/app/Http/Controllers/CartaController.php',
         'App\\Http\\Controllers\\ComunidadController' => __DIR__ . '/../..' . '/app/Http/Controllers/ComunidadController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\MisNiniosController' => __DIR__ . '/../..' . '/app/Http/Controllers/MisNiniosController.php',
         'App\\Http\\Controllers\\NinioController' => __DIR__ . '/../..' . '/app/Http/Controllers/NinioController.php',
+        'App\\Http\\Controllers\\ResponderCartaController' => __DIR__ . '/../..' . '/app/Http/Controllers/ResponderCartaController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
@@ -632,9 +643,14 @@ class ComposerStaticInit72a9be99053e866cd05efc3e40fc2669
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\User\\StoreRq' => __DIR__ . '/../..' . '/app/Http/Requests/User/StoreRq.php',
         'App\\Http\\Requests\\User\\UpdateRq' => __DIR__ . '/../..' . '/app/Http/Requests/User/UpdateRq.php',
+        'App\\Models\\Carta' => __DIR__ . '/../..' . '/app/Models/Carta.php',
         'App\\Models\\Comunidad' => __DIR__ . '/../..' . '/app/Models/Comunidad.php',
         'App\\Models\\Ninio' => __DIR__ . '/../..' . '/app/Models/Ninio.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
+        'App\\Notifications\\EnviarCartaRespondidaGestor' => __DIR__ . '/../..' . '/app/Notifications/EnviarCartaRespondidaGestor.php',
+        'App\\Notifications\\EnviarNotificacionCartaNueva' => __DIR__ . '/../..' . '/app/Notifications/EnviarNotificacionCartaNueva.php',
+        'App\\Policies\\CartaPolicy' => __DIR__ . '/../..' . '/app/Policies/CartaPolicy.php',
+        'App\\Policies\\NinioPolicy' => __DIR__ . '/../..' . '/app/Policies/NinioPolicy.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -2854,6 +2870,12 @@ class ComposerStaticInit72a9be99053e866cd05efc3e40fc2669
         'Knp\\Snappy\\GeneratorInterface' => __DIR__ . '/..' . '/knplabs/knp-snappy/src/Knp/Snappy/GeneratorInterface.php',
         'Knp\\Snappy\\Image' => __DIR__ . '/..' . '/knplabs/knp-snappy/src/Knp/Snappy/Image.php',
         'Knp\\Snappy\\Pdf' => __DIR__ . '/..' . '/knplabs/knp-snappy/src/Knp/Snappy/Pdf.php',
+        'Kutia\\Larafirebase\\Channels\\FirebaseChannel' => __DIR__ . '/..' . '/kutia-software-company/larafirebase/src/Channels/FirebaseChannel.php',
+        'Kutia\\Larafirebase\\Exceptions\\UnsupportedTokenFormat' => __DIR__ . '/..' . '/kutia-software-company/larafirebase/src/Exceptions/UnsupportedTokenFormat.php',
+        'Kutia\\Larafirebase\\Facades\\Larafirebase' => __DIR__ . '/..' . '/kutia-software-company/larafirebase/src/Facades/Larafirebase.php',
+        'Kutia\\Larafirebase\\Messages\\FirebaseMessage' => __DIR__ . '/..' . '/kutia-software-company/larafirebase/src/Messages/FirebaseMessage.php',
+        'Kutia\\Larafirebase\\Providers\\LarafirebaseServiceProvider' => __DIR__ . '/..' . '/kutia-software-company/larafirebase/src/Providers/LarafirebaseServiceProvider.php',
+        'Kutia\\Larafirebase\\Services\\Larafirebase' => __DIR__ . '/..' . '/kutia-software-company/larafirebase/src/Services/Larafirebase.php',
         'Laravel\\Sail\\Console\\AddCommand' => __DIR__ . '/..' . '/laravel/sail/src/Console/AddCommand.php',
         'Laravel\\Sail\\Console\\Concerns\\InteractsWithDockerComposeServices' => __DIR__ . '/..' . '/laravel/sail/src/Console/Concerns/InteractsWithDockerComposeServices.php',
         'Laravel\\Sail\\Console\\InstallCommand' => __DIR__ . '/..' . '/laravel/sail/src/Console/InstallCommand.php',

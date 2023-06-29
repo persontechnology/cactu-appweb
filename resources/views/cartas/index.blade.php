@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('breadcrumbs')
-{{ Breadcrumbs::render('usuarios.index') }}
+{{ Breadcrumbs::render('cartas.index') }}
 @endsection
 
 @section('breadcrumb_elements')

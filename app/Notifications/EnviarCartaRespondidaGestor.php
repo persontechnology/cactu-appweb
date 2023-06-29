@@ -39,7 +39,7 @@ class EnviarCartaRespondidaGestor extends Notification
         return (new MailMessage)
                     ->subject('Nueva carta contestada')
                     ->line($this->carta->ninio->nombres_completos.' a contestado a la carta de '.$this->carta->tipo)
-                    ->action('Ver carta contestada', url('/'))
+                    ->action('Ver carta contestada', route('cartas.show',$this->carta->id))
                     ->line('Gracias por tu atención!');
     }
 

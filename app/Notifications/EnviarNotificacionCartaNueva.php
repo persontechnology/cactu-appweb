@@ -7,6 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Crypt;
+use Kutia\Larafirebase\Messages\FirebaseMessage;
 
 class EnviarNotificacionCartaNueva extends Notification
 {
@@ -27,7 +28,16 @@ class EnviarNotificacionCartaNueva extends Notification
      */
     public function via(object $notifiable): array
     {
-        return ['mail'];
+        // $ninio=$this->carta->ninio;
+        // $opciones = array();
+        // if($ninio->email){
+        //     array_push($opciones,'mail');
+        // }
+        // if($ninio->fc){
+        //     array_push($opciones,'firebase');
+        // }
+        return ['mail','firebase'];
+        
     }
 
     /**
@@ -56,5 +66,15 @@ class EnviarNotificacionCartaNueva extends Notification
         return [
             //
         ];
+    }
+    public function toFirebase($notifiable)
+    {
+        $ninio=$this->carta->ninio;
+        $deviceTokens =$ninio->fcm_token;
+        
+        return   (new FirebaseMessage)
+            ->withTitle('Nueva carta')
+            ->withBody('Tiene una nueva carta de '.$this->carta->tipo.' por responder.')
+            ->asNotification($deviceTokens);
     }
 }

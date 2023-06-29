@@ -15,11 +15,11 @@
         }
         #imagenfooter {
             padding-top: 2px;
-            padding-left: 25%;
-            -webkit-transform: rotate(-6deg);
-            -moz-transform: rotate(-6deg);
-            -ms-transform: rotate(-6deg);
-            transform: rotate(-6deg);
+            padding-left: 5%;
+            -webkit-transform: rotate(-2deg);
+            -moz-transform: rotate(-2deg);
+            -ms-transform: rotate(-2deg);
+            transform: rotate(-2deg);
         } 
         p {
 
@@ -31,7 +31,7 @@
         .card-img {
            
             border-radius: 1px;
-            width: 75%;
+            width: 90%;
             height: 350px;
 
         }
@@ -100,7 +100,7 @@
             </div>
         </div>
         <div class="footer">
-            <img width="550px;" height="350px;" id="imagenfooter" src="{!! public_path($carta->archivo_imagen_ninio_link) !!}" class="img-fluid rounded-top" alt="">
+            <img width="75%;" height="450px;" id="imagenfooter" src="{!! public_path($carta->archivo_imagen_ninio_link) !!}" class="img-fluid rounded-top" alt="">
           
             <table class="egt" style="width: 100%; padding: 25px;background-color: #d5dda9;">
                 <tbody class="esta">

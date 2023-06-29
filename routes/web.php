@@ -29,7 +29,7 @@ Route::get('/', function () {
     // Artisan::call('key:generate');
     // Artisan::call('migrate:fresh --seed');
     return view('welcome');
-});
+})->name('welcome');
 
 
 

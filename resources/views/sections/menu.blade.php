@@ -40,7 +40,7 @@
                 @role('ADMINISTRADOR')
                 <li class="nav-item">
                     <a href="{{ route('usuarios.index') }}" class="nav-link {{ Route::is('usuarios*')?'active':'' }}">
-                        <i class="ph-users"></i><span>Usuario</span>
+                        <i class="ph-users"></i><span>Usuarios</span>
                     </a>
                 </li>
                 <li class="nav-item">

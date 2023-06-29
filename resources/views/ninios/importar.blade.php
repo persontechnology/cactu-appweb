@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('breadcrumbs')
-
+{{ Breadcrumbs::render('ninios.importar') }}
 @endsection
 
 

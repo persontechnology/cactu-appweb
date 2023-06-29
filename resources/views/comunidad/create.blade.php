@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('breadcrumbs')
-{{ Breadcrumbs::render('usuarios.create') }}
+{{ Breadcrumbs::render('comunidad.create') }}
 @endsection
 
 

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('breadcrumbs')
-{{ Breadcrumbs::render('usuarios.index') }}
+{{ Breadcrumbs::render('mis-ninios.index') }}
 @endsection
 
 @section('breadcrumb_elements')

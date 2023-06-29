@@ -23,6 +23,7 @@ return new class extends Migration
             $table->enum('estado',['ACTIVO','INACTIVO'])->nullable();
             $table->string('email')->nullable();
             $table->string('numero_celular')->nullable();
+            $table->text('fcm_token')->nullable();
         });
     }
 

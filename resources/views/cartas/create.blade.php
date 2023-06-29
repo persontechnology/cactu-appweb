@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('breadcrumbs')
-
+{{ Breadcrumbs::render('cartas.create') }}
 @endsection
 @section('content')
 
@@ -86,7 +86,7 @@
 		<div class="modal-dialog modal-dialog-scrollable modal-full">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title">Lista de usuarios activos</h5>
+					<h5 class="modal-title">Lista de niños activos</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 				</div>
 

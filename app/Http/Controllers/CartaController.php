@@ -85,7 +85,10 @@ class CartaController extends Controller
                 $carta->save();
             }
             DB::commit();
-            $this->enviarNotificacion($carta);
+            if($ninio->email || $ninio->fcm_token){
+                $this->enviarNotificacion($carta);
+            }
+            
             Session::flash('success','Carta de '.$carta->tipo.' enviada a '.$ninio->nombres_completos);
             return redirect()->route('cartas.index');
         } catch (\Throwable $th) {
