@@ -32,12 +32,13 @@ class EnviarNotificacionCartaNueva extends Notification
         $data = array();
 
         if($ninio->email){
-            array_push($data,'email');
+            array_push($data,'mail');
         }
         if($ninio->fcm_token){
             array_push($data,'firebase');
         }
         return $data;
+        
         
     }
 
