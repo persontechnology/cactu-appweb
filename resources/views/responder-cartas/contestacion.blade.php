@@ -94,7 +94,6 @@
           </div>
         </div>
     </div>
-        
 
     @push('scriptsHeader')
     <script src="{{ asset('assets/js/jslib-html5-camera-photo.min.js') }}"></script>
