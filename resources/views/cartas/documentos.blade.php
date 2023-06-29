@@ -13,7 +13,7 @@
                     <strong>IMAGEN DE LA BOLETA</strong>
                 </div>
                 <div class="card-img-actions" >
-                    <img class="card-img-top img-fluid" src="{{ Storage::url($carta->archivo_imagen) }}" alt="">
+                    <img class="card-img-top img-fluid" src="{{ asset(Storage::url($carta->archivo_imagen)) }}" alt="">
                 </div>
             </div>
         </div>
@@ -40,11 +40,11 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    IMAGEN PERSONAL DE LA CARTA
+                    <strong>IMAGEN PERSONAL DE LA CARTA</strong>
                 </div>
                 <div class="card-body">
                     <div class="card-img-actions" >
-                        <img class="card-img-top img-fluid" src="{{ Storage::url($carta->archivo_imagen_ninio) }}" alt="">
+                        <img class="card-img-top img-fluid" src="{{ asset(Storage::url($carta->archivo_imagen_ninio)) }}" alt="">
                     </div>
                 </div>
             </div>
@@ -55,11 +55,11 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    IMAGEN FAMILIAR DE LA CARTA
+                    <strong>IMAGEN FAMILIAR DE LA CARTA</strong>
                 </div>
                 <div class="card-body">
                     <div class="card-img-actions" >
-                        <img class="card-img-top img-fluid" src="{{ Storage::url($carta->archivo_familia_ninio) }}" alt="">
+                        <img class="card-img-top img-fluid" src="{{ asset(Storage::url($carta->archivo_familia_ninio)) }}" alt="">
                     </div>
                 </div>
             </div>
