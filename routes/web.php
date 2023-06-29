@@ -8,6 +8,7 @@ use App\Http\Controllers\MisNiniosController;
 use App\Http\Controllers\NinioController;
 use App\Http\Controllers\ResponderCartaController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WelcomeController;
 use App\Models\Carta;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
@@ -33,10 +34,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('ver-archivo-pdf-por-ninio/{id}',function($id){
-    $carta=Carta::findOrFail($id);
-    return Storage::get($carta->archivo_pdf);   
-})->name('verarchivopdfporninio');
+Route::get('ver-archivo-pdf-por-ninio/{id}',[WelcomeController::class,'pdfninio'])->name('verarchivopdfporninio');
 
 
 Auth::routes(['register' => false]);
