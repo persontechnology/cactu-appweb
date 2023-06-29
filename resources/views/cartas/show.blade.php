@@ -8,7 +8,6 @@
 
 @section('content')
 <div class="card">
-  <a href="{{ asset(Storage::url($carta->archivo_pdf)) }}">{{ asset(Storage::url($carta->archivo_pdf)) }}</a>
     <div class="card-body">
         <div class="table-responsive">
             <div class="ratio ratio-16x9">

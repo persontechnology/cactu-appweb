@@ -9,6 +9,7 @@ use App\Http\Controllers\NinioController;
 use App\Http\Controllers\ResponderCartaController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +32,9 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-
+Route::get('ver-archivo-pdf-por-ninio/{path}',function($path){
+    return Storage::get($path);   
+})->name('verarchivopdfporninio');
 
 
 Auth::routes(['register' => false]);
