@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Crypt;
 
 class ResponderCarta extends Controller
 {
@@ -30,7 +31,7 @@ class ResponderCarta extends Controller
                 'tipo_carta_nombre' => $carta->tipo,
                 'estado'=>$carta->estado,
                 'edad' => Carbon::parse($carta->ninio->fecha_nacimiento)->age??0,
-                'archivo'=>$carta->archivo_pdf?route('verarchivopdfporninio',$carta->id):'no'
+                'archivo'=>$carta->archivo_pdf?route('verarchivopdfporninio',Crypt::encryptString($carta->id)):'no'
             ]);
         }
 
