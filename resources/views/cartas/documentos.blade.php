@@ -13,7 +13,7 @@
                     <strong>IMAGEN DE LA BOLETA</strong>
                 </div>
                 <div class="card-img-actions" >
-                    <img class="card-img-top img-fluid" src="{{ asset(Storage::url($carta->archivo_imagen)) }}" alt="">
+                    <img class="card-img-top img-fluid" src="{{ route('cartas.ver-archivo',[$carta->id,'archivo_imagen']) }}" alt="">
                 </div>
             </div>
         </div>
@@ -29,7 +29,7 @@
                 <div class="card-body">
                     
                     <div class="ratio ratio-16x9">
-                        <iframe src="{{ route('verarchivopdfporninio',Crypt::encryptString($carta->id)) }}" title="YouTube video" allowfullscreen></iframe>
+                        <iframe src="{{ route('cartas.ver-archivo',[$carta->id,'archivo_pdf']) }}" title="YouTube video" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
@@ -44,7 +44,7 @@
                 </div>
                 <div class="card-body">
                     <div class="card-img-actions" >
-                        <img class="card-img-top img-fluid" src="{{ asset(Storage::url($carta->archivo_imagen_ninio)) }}" alt="">
+                        <img class="card-img-top img-fluid" src="{{ route('cartas.ver-archivo',[$carta->id,'archivo_imagen_ninio']) }}" alt="">
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                 </div>
                 <div class="card-body">
                     <div class="card-img-actions" >
-                        <img class="card-img-top img-fluid" src="{{ asset(Storage::url($carta->archivo_familia_ninio)) }}" alt="">
+                        <img class="card-img-top img-fluid" src="{{ route('cartas.ver-archivo',[$carta->id,'archivo_familia_ninio']) }}" alt="">
                     </div>
                 </div>
             </div>

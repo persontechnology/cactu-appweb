@@ -174,12 +174,14 @@ class CartaController extends Controller
                 return Storage::get($carta->archivo_imagen_ninio);        
                 break;
             case 'archivo_pdf':
-                return Storage::get($carta->archivo_pdf);        
+                return Storage::response($carta->archivo_pdf);        
                 break;
             case 'archivo_imagen':
                 return Storage::get($carta->archivo_imagen);        
                 break;
-                
+            case 'archivo_familia_ninio':
+                return Storage::get($carta->archivo_familia_ninio);        
+                break;
             default:
                 return '';
                 break;

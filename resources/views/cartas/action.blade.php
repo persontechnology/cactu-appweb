@@ -14,7 +14,7 @@
             
 
         <a href="{{ route('cartas.documentos',$c->id) }}"  class="dropdown-item">
-            <i class="ph ph-trash me-2"></i>
+            <i class="ph ph-file-search me-2"></i>
             Documentos
         </a> 
 
