@@ -28,15 +28,16 @@ class EnviarNotificacionCartaNueva extends Notification
      */
     public function via(object $notifiable): array
     {
-        // $ninio=$this->carta->ninio;
-        // $opciones = array();
-        // if($ninio->email){
-        //     array_push($opciones,'mail');
-        // }
-        // if($ninio->fc){
-        //     array_push($opciones,'firebase');
-        // }
-        return ['mail','firebase'];
+        $ninio=$this->carta->ninio;
+        $data = array();
+
+        if($ninio->email){
+            array_push($data,'email');
+        }
+        if($ninio->fcm_token){
+            array_push($data,'firebase');
+        }
+        return $data;
         
     }
 
