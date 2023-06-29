@@ -30,7 +30,7 @@ class ResponderCarta extends Controller
                 'tipo_carta_nombre' => $carta->tipo,
                 'estado'=>$carta->estado,
                 'edad' => Carbon::parse($carta->ninio->fecha_nacimiento)->age??0,
-                'archivo'=>$carta->archivo_pdf?route('verarchivopdfporninio',$carta->archivo_pdf):'no'
+                'archivo'=>$carta->archivo_pdf?route('verarchivopdfporninio',$carta->id):'no'
             ]);
         }
 
