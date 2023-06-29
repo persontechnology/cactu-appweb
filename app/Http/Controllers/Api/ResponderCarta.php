@@ -29,7 +29,7 @@ class ResponderCarta extends Controller
                 'asunto' => $carta->asunto,
                 'tipo_carta_nombre' => $carta->tipo,
                 'estado'=>$carta->estado,
-                'edad' => Carbon::parse($carta->ninio->edad)->age??0,
+                'edad' => Carbon::parse($carta->ninio->fecha_nacimiento)->age??0,
                 'archivo'=>$carta->archivo_pdf?asset(Storage::url($carta->archivo_pdf)):'no'
             ]);
         }
