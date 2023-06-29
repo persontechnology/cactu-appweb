@@ -12,12 +12,20 @@
             </a>
           @endcan
             
+
+        <a href="{{ route('cartas.documentos',$c->id) }}"  class="dropdown-item">
+            <i class="ph ph-trash me-2"></i>
+            Documentos
+        </a> 
+
+
             @can('eliminar', $c)
             <a href="{{ route('cartas.destroy',$c->id) }}" data-msg="Carta de {{ $c->tipo }} de {{ $c->ninio->nombres_completos }}" onclick="event.preventDefault(); eliminar(this)" class="dropdown-item">
                 <i class="ph ph-trash me-2"></i>
                 Eliminar
             </a>    
             @endcan
+            
             
             
         </div>

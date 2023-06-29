@@ -186,4 +186,9 @@ class CartaController extends Controller
         }
     }
 
+    public function documentos($id) {
+        $carta=Carta::findOrFail($id);
+        return view('cartas.documentos',['carta'=>$carta]);
+    }
+
 }
