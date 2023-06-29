@@ -110,24 +110,30 @@
         
         var FACING_MODES = JslibHtml5CameraPhoto.FACING_MODES;
         var cameraPhoto = new JslibHtml5CameraPhoto.default(videoElement);
-
+        var estado_camara=false;
 
         function startCamera(){
             
             cameraPhoto.startCamera(FACING_MODES.ENVIRONMENT)
             .then(() => {
                 console.log('Camera started !');
+                estado_camara=true;
             })
             .catch((error) => {
-            
                 alert('Encontramos un error con la camara del dispositivo.')
                 console.error('Camera not started!', error);
+                
             });
         }
 
         function abrirModal(){
-            startCamera()
-            $('#staticBackdrop').modal('show');
+            startCamera();
+            if(estado_camara){
+                $('#staticBackdrop').modal('show');
+            }else{
+                $('#staticBackdrop').modal('hide');
+            }
+            
         }
 
         function cerrarModal(arg){

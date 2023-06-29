@@ -212,19 +212,20 @@
         let imgElement = document.getElementById('imgId');
         var FACING_MODES = JslibHtml5CameraPhoto.FACING_MODES;
         var cameraPhoto = new JslibHtml5CameraPhoto.default(videoElement);
+        var estado_camara=false;
 
         let videoElementFamilia = document.getElementById('videoIdFamilia');
         let imgElementFamilia = document.getElementById('imgIdFamilia');
-        
         var FACING_MODES_FAMILIA = JslibHtml5CameraPhoto.FACING_MODES;
         var cameraPhotoFamilia = new JslibHtml5CameraPhoto.default(videoElementFamilia);
-
+        var estado_camara_familia=false;
 
         function startCamera(){
             
             cameraPhoto.startCamera(FACING_MODES.ENVIRONMENT)
             .then(() => {
                 console.log('Camera started !');
+                estado_camara=true;
             })
             .catch((error) => {
             
@@ -237,6 +238,7 @@
             cameraPhotoFamilia.startCamera(FACING_MODES_FAMILIA.ENVIRONMENT)
             .then(() => {
                 console.log('Camera started !');
+                estado_camara_familia=true;
             })
             .catch((error) => {
                 alert('Encontramos un error con la camara del dispositivo.')
@@ -247,12 +249,21 @@
 
         function abrirModal(){
             startCamera()
-            $('#staticBackdrop').modal('show');
+            
+            if(estado_camara){
+                $('#staticBackdrop').modal('show');
+            }else{
+                $('#staticBackdrop').modal('hide');
+            }
         }
 
         function abrirModalFamilia(){
             startCameraFamilia()
-            $('#staticBackdropFamilia').modal('show');
+            if(estado_camara_familia){
+                $('#staticBackdropFamilia').modal('show');
+            }else{
+                $('#staticBackdropFamilia').modal('hide');
+            }
         }
       
 
