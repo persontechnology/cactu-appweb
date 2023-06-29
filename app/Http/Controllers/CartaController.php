@@ -85,9 +85,9 @@ class CartaController extends Controller
                 $carta->save();
             }
             DB::commit();
-            if($ninio->email || $ninio->fcm_token){
-                $this->enviarNotificacion($carta);
-            }
+           
+            $this->enviarNotificacion($carta);
+           
             
             Session::flash('success','Carta de '.$carta->tipo.' enviada a '.$ninio->nombres_completos);
             return redirect()->route('cartas.index');
@@ -101,7 +101,7 @@ class CartaController extends Controller
 
     public function enviarNotificacion($carta){
 
-        if($carta->ninio->email){
+        if($carta->ninio->email || $carta->ninio->fcm_token){
             $carta->ninio->notify(new EnviarNotificacionCartaNueva($carta));
         }
         
