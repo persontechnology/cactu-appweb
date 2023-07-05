@@ -206,7 +206,7 @@ class ResponderCarta extends Controller
 
         } catch (\Throwable $th) {
             DB::rollBack();
-            return response()->json(['error'=>'Carta no registrado vuelva intentar']);
+            return response()->json(['error'=>'Carta no registrado vuelva intentar'.$th->getMessage()]);
         }
     }
 
