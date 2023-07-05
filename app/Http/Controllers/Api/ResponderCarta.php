@@ -247,6 +247,23 @@ class ResponderCarta extends Controller
         return $this->guardarCarta($request);
     }
 
+    public function responderIniciada(Request $request) {
+        $request->validate([
+            'id'=>'required',
+            'imagen'=>'required',
+            'detalle'=>'required'
+        ]);
+        $detalle= '<p><b>Hola</b> '. $request->nombre_patrocinador.'</p>'.
+                    '<p>Te cuento que '.$request->te_cuento_que.'</p>'.
+                    '<p>Gracias a ChildFund, en CACTU aprendí '.$request->en_cactu_aprendi.'</p>'.
+                    '<p><b>Es hora de hacer una pregunta.</b></p>'.
+                    '<p>¿ '.$request->pregunta_al_patrocinador.' ?</p>'.
+                    '<p><b>Aquí mi despedida.</b></p>'.
+                    '<p>'.$request->detalle.'</p>';
+
+        $request['detalle']=$detalle;
+        return $this->guardarCarta($request);
+    }
     public function enviarMensaje() {
         return response()->json(['success'=>'Carta resgitrado exitosamente']);
     }
