@@ -87,6 +87,10 @@ Breadcrumbs::for('cartas.show', function (BreadcrumbTrail $trail,$user) {
     $trail->parent('cartas.index');
     $trail->push('Ver', route('cartas.show',$user->id));
 });
+Breadcrumbs::for('cartas.edit', function (BreadcrumbTrail $trail,$user) {
+    $trail->parent('cartas.show',$user);
+    $trail->push('Ver', route('cartas.edit',$user->id));
+});
 Breadcrumbs::for('cartas.documentos', function (BreadcrumbTrail $trail,$user) {
     $trail->parent('cartas.index');
     $trail->push('Documentos', route('cartas.documentos',$user->id));

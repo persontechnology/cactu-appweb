@@ -1,15 +1,7 @@
 @extends('layouts.app')
 
 @section('breadcrumbs')
-{{ Breadcrumbs::render('cartas.index') }}
-@endsection
-
-@section('breadcrumb_elements')
-<div class="d-lg-flex mb-2 mb-lg-0">
-    <a href="{{ route('cartas.create') }}" class="d-flex align-items-center text-body py-2">
-        <i class="ph ph-file-plus"></i>Nuevo
-    </a>
-</div>
+{{ Breadcrumbs::render('cartas.edit',$carta) }}
 @endsection
 
 @section('content')
