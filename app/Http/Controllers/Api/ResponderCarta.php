@@ -94,7 +94,7 @@ class ResponderCarta extends Controller
         '</p>';
 
         $request['detalle']=$detalle;
-        return $this->responderContestacion($request);
+        return $this->guardarCarta($request);
         
 
     }
@@ -160,12 +160,10 @@ class ResponderCarta extends Controller
         '<p>Cuéntale por qué quisieras que te conteste tu patrocinador, envíale un mensaje de despedida:</p><p> '.$request->despedida.'</p>';
         
         $request['detalle']=$detalle;
-        return $this->responderContestacion($request);
+        return $this->guardarCarta($request);
     }
 
-    public function responderContestacion(Request $request)
-    {
-
+    public function guardarCarta(Request $request){
         $request->validate([
             'id'=>'required',
             'imagen'=>'required',
@@ -210,6 +208,25 @@ class ResponderCarta extends Controller
             DB::rollBack();
             return response()->json(['error'=>'Carta no registrado vuelva intentar']);
         }
+    }
+
+    public function responderContestacion(Request $request)
+    {
+        $request->validate([
+            'id'=>'required',
+            'imagen'=>'required',
+            'detalle'=>'required'
+        ]);
+        $detalle= '<p><b>Hola</b> '. $request->nombre_patrocinador.
+                    ', agradesco por la '.$request->agradezco_por.'</p>'.
+                    '<p>Te cuento que '.$request->te_cuento_que.'</p>'.
+                    '<p><b>Es hora de hacer una pregunta.</b></p>'.
+                    '<p>¿ '.$request->pregunta_al_patrocinador.' ?</p>'.
+                    '<p><b>Aquí mi despedida.</b></p>'.
+                    '<p>'.$request->detalle.'</p>';
+        $request['detalle']=$detalle;
+        return $this->guardarCarta($request);
+        
     }
 
     public function enviarMensaje() {
