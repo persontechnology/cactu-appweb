@@ -7,9 +7,9 @@
     <h1>Carta de {{ $carta->tipo }}</h1>
     @if ($carta->archivo_pdf)
         <h3>DE PARTE DE TU PATROCINADOR</h3>
-        {{-- <div class="ratio ratio-16x9 my-2">
+        <div class="ratio ratio-16x9 my-2">
             <iframe src="{{ route('cartas-ninio.ver-archivo',[Crypt::encryptString($carta->id),'pdf']) }}" title="{{ $carta->tipo }}" allowfullscreen></iframe>
-        </div>  --}}
+        </div> 
     @endif
 
     <hr>
