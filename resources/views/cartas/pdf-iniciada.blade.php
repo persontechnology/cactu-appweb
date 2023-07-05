@@ -57,7 +57,7 @@
             transform: rotate(1deg);
         }
         .contenedor {
-            background-image: url("{!! public_path('img/cartas/fondo_agradecimiento.png') !!}");
+            background-image: url("{!! public_path('img/cartas/fondo_iniciada.png') !!}");
             background-repeat: no-repeat;
             background-size: 100% 1350px;
             width: 100%;
@@ -114,7 +114,7 @@
             padding-right: 6em;
         }
         .bottom-arrow {
-            border-bottom: 15px solid #cbd818;
+            border-bottom: 15px solid #18b2ce;
         }
         .bottom-arrow:after {
             content:'';
@@ -124,7 +124,7 @@
             margin: 0 auto;
             width: 0;
             height: 0;
-            border-top: 30px solid #cbd818;
+            border-top: 30px solid #18b2ce;
             border-left: 50px solid transparent;
             border-right: 50px solid transparent;
         }
@@ -138,12 +138,12 @@
 <body>
    <div class="contenedor">
     
-    <div class="fecha" style="padding-top: 8em;">
-        <h3>Fecha {{ \Carbon\Carbon::parse($carta->fecha_respuesta)->format('d/M/Y')  }} </h3>
-    </div>
-    
+        <div class="fecha" style="padding-top: 10em;">
+            <h3>Fecha {{ \Carbon\Carbon::parse($carta->fecha_respuesta)->format('d/M/Y')  }} </h3>
+
+        </div>
     <div class="cuerpo">
-        <table style="background-color: #e4b4b4; width: 100%;">
+        <table style="background-color: #18b2ce; width: 100%;">
             <tr>
                 <th>N° child de niño: {{ $carta->ninio->numero_child }}</th>
                 <th>Carta de {{ $carta->tipo }}</th>
@@ -185,11 +185,11 @@
    </div>
     
    <div class="cuerpo">
-    <hr>
+   
         <img style=" width: 100%;" src="{!! public_path($carta->archivo_imagen_link) !!}">
     </div>
     <div>
-       
+        <hr>
         <img style="width: 350px;" src="{{ public_path('img/cartas/ccagradecimiento.jpg') }}">
        <p>With this letter, you will notice something is different that we are very excited
         about. We have introduced the use of tablets and cell phones that allow children
@@ -198,13 +198,6 @@
         much as children are enjoying creating them, and learning about technology in the
         process. Make sure you write back to your sponsor child and keep the
         conversation going!</p>
-    </div>
-    <br>
-    <br>
-    <br>
-    <hr>
-    <div>
-        <img style="width: 100%;" src="{{ public_path('img/cartas/pie_agradecimiento.png') }}">
     </div>
 </div>
 

@@ -70,7 +70,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::get('cartas-ninio/{numero_child}', [ResponderCartaController::class, 'index'])->name('cartas-ninio.index');
 Route::get('carta-ninio-ver/{idcarta}/{numero_child}', [ResponderCartaController::class, 'ver'])->name('cartas-ninio.ver');
 Route::get('carta-ninio-archivo/{id}/{tipo}', [ResponderCartaController::class, 'verArchivo'])->name('cartas-ninio.ver-archivo');
-Route::post('carta-ninio-archivo-guardar', [ResponderCartaController::class, 'guardarArchivo'])->name('cartas-ninio.guardar-archivo');
+Route::post('carta-ninio-guardar-contestacion', [ResponderCartaController::class, 'guardarContestacion'])->name('cartas-ninio.guardar-contestacion');
+Route::post('carta-ninio-guardar-agradecimiento', [ResponderCartaController::class, 'guardarAgradecimiento'])->name('cartas-ninio.guardar-agradecimiento');
+Route::post('carta-ninio-guardar-iniciada', [ResponderCartaController::class, 'guardarIniciada'])->name('cartas-ninio.guardar-iniciada');
 Route::post('cartas-ninio.guardar-presentacion-mayor', [ResponderCartaController::class, 'guardarPresentacionMayor'])->name('cartas-ninio.guardar-presentacion-mayor');
 Route::post('cartas-ninio.guardar-presentacion-menor', [ResponderCartaController::class, 'guardarPresentacionMenor'])->name('cartas-ninio.guardar-presentacion-menor');
 

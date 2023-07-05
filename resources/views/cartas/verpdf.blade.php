@@ -8,6 +8,9 @@
     @case('Presentación')
         @include('cartas.pdf-presentacion',['carta'=>$carta])
         @break
+    @case('Iniciada')
+        @include('cartas.pdf-iniciada',['carta'=>$carta])
+        @break
     @default
         <h1>NO EXISTE CARTA TIPO {{ $carta->tipo }}</h1>
 @endswitch

@@ -42,7 +42,7 @@ class CartaPolicy
 
 
     // responder la carta por parte del niño
-    public function responderCartaXninio(User $user, Carta $carta): bool
+    public function responderCartaXninio(?User $user, Carta $carta): bool
     {
         if($carta->estado==='Respondida'){
             return false;

@@ -34,6 +34,7 @@
                         <option value="Contestación" {{ old('tipo'==='Contestación'?'selected':'') }}>Contestación</option>
                         <option value="Presentación" {{ old('tipo'==='Presentación'?'selected':'') }}>Presentación</option>
                         <option value="Agradecimiento" {{ old('tipo'==='Agradecimiento'?'selected':'') }}>Agradecimiento</option>
+                        <option value="Iniciada" {{ old('tipo'==='Iniciada'?'selected':'') }}>Iniciada</option>
                         
                     </select>
                     <label>Tipo de carta<i class="text-danger">*</i></label>

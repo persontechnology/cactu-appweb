@@ -16,28 +16,34 @@
     <p><b>Asunto:</b>{{ $carta->asunto }}</p>
     <p><strong>Hola,</strong> {{ $carta->ninio->nombres_completos }}</p>
 
-    <form action="{{ route('cartas-ninio.guardar-contestacion') }}" id="formCarta" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('cartas-ninio.guardar-agradecimiento') }}" id="formCarta" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="imagen" id="inputImagen">
         <input type="hidden" name="id" value="{{ Crypt::encryptString($carta->id) }}">
         
         <div class="mb-2">
             <label for="nombre_patrocinador">Ingresa el nombre de tu patrocinador</label>
-            <input type="text" required name="nombre_patrocinador" value="{{ old('nombre_patrocinador') }}" id="nombre_patrocinador" class="form-control input " placeholder="Ingresa el nombre de tu patrocinador." required>
+            <input type="text"  name="nombre_patrocinador" value="{{ old('nombre_patrocinador') }}" id="nombre_patrocinador" class="form-control input " placeholder="Ingresa el nombre de tu patrocinador." required>
         </div>
 
         <div class="mb-2">
-            <label for="agradezco_por">Agradesco por la</label>
-            <input type="text" required name="agradezco_por" value="{{ old('agradezco_por') }}" id="agradezco_por" class="form-control input " placeholder="Libreta, carta, tarjeta" required>
+            <label for="agradezco_por">Agradezco por el valor enviado de</label>
+            <input type="number" step="0.01"  name="agradezco_por" value="{{ old('agradezco_por') }}" id="agradezco_por" class="form-control input " placeholder="" required>
+        </div>
+
+        <div class="mb-2">
+            <label for="regalo_usar_para">Tu regalo lo voy  a usar para </label>
+            <input type="text"  name="regalo_usar_para" value="{{ old('regalo_usar_para') }}" id="regalo_usar_para" class="form-control input " placeholder="...." required>
         </div>
 
         <div class="mb-2">
             <label for="te_cuento_que">Te cuento que </label>
-            <input type="text" required name="te_cuento_que" value="{{ old('te_cuento_que') }}" id="te_cuento_que" class="form-control input " placeholder="...." required>
+            <input type="text"  name="te_cuento_que" value="{{ old('te_cuento_que') }}" id="te_cuento_que" class="form-control input " placeholder="...." required>
         </div>
+
         <div class="mb-2">
             <label for="pregunta_al_patrocinador">Es hora de hacer una pregunta a tu patrocinador</label>
-            <input type="text" required name="pregunta_al_patrocinador" value="{{ old('pregunta_al_patrocinador') }}" id="pregunta_al_patrocinador" class="form-control input " placeholder="...." required>
+            <input type="text"  name="pregunta_al_patrocinador" value="{{ old('pregunta_al_patrocinador') }}" id="pregunta_al_patrocinador" class="form-control input " placeholder="...." required>
         </div>
         
         <label for="detalle">Aquí tu despedida, no te olvides de poner  tu nombre </label>

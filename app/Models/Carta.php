@@ -30,6 +30,7 @@ class Carta extends Model
             $model->user_id=Auth::id();
         });
         self::updating(function($model){
+            $model->user_id=Auth::id();
         });
         self::created(function($model){
          });

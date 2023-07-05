@@ -74,20 +74,66 @@ class ResponderCartaController extends Controller
         }
     }
 
-   
-    public function guardarArchivo(Request $request)
-    {
-
+    public function guardarContestacion(Request $request) {
         $request->validate([
             'id'=>'required',
             'imagen'=>'required',
             'detalle'=>'required'
         ]);
-        
+        $detalle= '<p><b>Hola</b> '. $request->nombre_patrocinador.
+                    ', agradesco por la '.$request->agradezco_por.'</p>'.
+                    '<p>Te cuento que '.$request->te_cuento_que.'</p>'.
+                    '<p><b>Es hora de hacer una pregunta.</b></p>'.
+                    '<p>¿ '.$request->pregunta_al_patrocinador.' ?</p>'.
+                    '<p><b>Aquí mi despedida.</b></p>'.
+                    '<p>'.$request->detalle.'</p>';
+        $request['detalle']=$detalle;
+        return $this->guardarArchivo($request);
+    }
+
+    public function guardarAgradecimiento(Request $request) {
+        $request->validate([
+            'id'=>'required',
+            'imagen'=>'required',
+            'detalle'=>'required'
+        ]);
+        $detalle= '<p><b>Hola</b> '. $request->nombre_patrocinador.
+                    ', Agradezco por el valor enviado de '.$request->agradezco_por.'</p>'.
+                    '<p>Tu regalo lo voy a usar para '.$request->regalo_usar_para.'</p>'.
+                    '<p>Te cuento que '.$request->te_cuento_que.'</p>'.
+                    '<p><b>Es hora de hacer una pregunta.</b></p>'.
+                    '<p>¿ '.$request->pregunta_al_patrocinador.' ?</p>'.
+                    '<p><b>Aquí mi despedida.</b></p>'.
+                    '<p>'.$request->detalle.'</p>';
+
+        $request['detalle']=$detalle;
+        return $this->guardarArchivo($request);
+    }
+   public function guardarIniciada(Request $request)  {
+        $request->validate([
+            'id'=>'required',
+            'imagen'=>'required',
+            'detalle'=>'required'
+        ]);
+        $detalle= '<p><b>Hola</b> '. $request->nombre_patrocinador.'</p>'.
+                    '<p>Te cuento que '.$request->te_cuento_que.'</p>'.
+                    '<p>Gracias a ChildFund, en CACTU aprendí '.$request->en_cactu_aprendi.'</p>'.
+                    '<p><b>Es hora de hacer una pregunta.</b></p>'.
+                    '<p>¿ '.$request->pregunta_al_patrocinador.' ?</p>'.
+                    '<p><b>Aquí mi despedida.</b></p>'.
+                    '<p>'.$request->detalle.'</p>';
+
+        $request['detalle']=$detalle;
+        return $this->guardarArchivo($request);
+   }
+    public function guardarArchivo(Request $request)
+    {
         try {
             DB::beginTransaction();
             $carta=Carta::findOrFail(Crypt::decryptString($request->id));
+            
             $this->authorize('responderCartaXninio',$carta);
+            
             $url_foto_ninio=$this->guardarImagenBase64($carta->id.'.png',$request->input('imagen'),'foto_personal');
 
             if($request->foto_familia){

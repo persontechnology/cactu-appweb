@@ -4,7 +4,13 @@
 {{ Breadcrumbs::render('cartas.show',$carta) }}
 @endsection
 
-
+@section('breadcrumb_elements')
+<div class="d-lg-flex mb-2 mb-lg-0">
+    <a href="{{ route('cartas.edit',$carta) }}" class="d-flex align-items-center text-body py-2">
+        <i class="ph ph-pen"></i>Editar
+    </a>
+</div>
+@endsection
 
 @section('content')
 <div class="card">

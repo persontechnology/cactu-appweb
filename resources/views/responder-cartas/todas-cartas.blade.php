@@ -1,9 +1,19 @@
 @extends('responder-cartas.principal')
 @section('content')
-    @if ($carta->tipo==='Contestación' || $carta->tipo==='Agradecimiento')
+
+    @if ($carta->tipo==='Contestación')
         @include('responder-cartas.contestacion',['carta'=>$carta,'ninio'=>$ninio])
     @endif
     
+
+    @if ($carta->tipo==='Agradecimiento')
+        @include('responder-cartas.agradecimineto',['carta'=>$carta,'ninio'=>$ninio])
+    @endif
+
+    @if ($carta->tipo==='Iniciada')
+        @include('responder-cartas.iniciada',['carta'=>$carta,'ninio'=>$ninio])
+    @endif
+
     @if ($carta->tipo==='Presentación')
         @php
             $edad=Carbon\Carbon::parse($ninio->fecha_nacimiento)->age

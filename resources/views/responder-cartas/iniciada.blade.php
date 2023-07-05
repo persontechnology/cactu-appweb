@@ -16,7 +16,7 @@
     <p><b>Asunto:</b>{{ $carta->asunto }}</p>
     <p><strong>Hola,</strong> {{ $carta->ninio->nombres_completos }}</p>
 
-    <form action="{{ route('cartas-ninio.guardar-contestacion') }}" id="formCarta" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('cartas-ninio.guardar-iniciada') }}" id="formCarta" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="imagen" id="inputImagen">
         <input type="hidden" name="id" value="{{ Crypt::encryptString($carta->id) }}">
@@ -26,15 +26,17 @@
             <input type="text" required name="nombre_patrocinador" value="{{ old('nombre_patrocinador') }}" id="nombre_patrocinador" class="form-control input " placeholder="Ingresa el nombre de tu patrocinador." required>
         </div>
 
-        <div class="mb-2">
-            <label for="agradezco_por">Agradesco por la</label>
-            <input type="text" required name="agradezco_por" value="{{ old('agradezco_por') }}" id="agradezco_por" class="form-control input " placeholder="Libreta, carta, tarjeta" required>
-        </div>
+        
 
         <div class="mb-2">
             <label for="te_cuento_que">Te cuento que </label>
             <input type="text" required name="te_cuento_que" value="{{ old('te_cuento_que') }}" id="te_cuento_que" class="form-control input " placeholder="...." required>
         </div>
+        <div class="mb-2">
+            <label for="en_cactu_aprendi">Gracias a ChildFund, en CACTU aprendí </label>
+            <input type="text" required name="en_cactu_aprendi" value="{{ old('en_cactu_aprendi') }}" id="en_cactu_aprendi" class="form-control input " placeholder="..." required>
+        </div>
+
         <div class="mb-2">
             <label for="pregunta_al_patrocinador">Es hora de hacer una pregunta a tu patrocinador</label>
             <input type="text" required name="pregunta_al_patrocinador" value="{{ old('pregunta_al_patrocinador') }}" id="pregunta_al_patrocinador" class="form-control input " placeholder="...." required>

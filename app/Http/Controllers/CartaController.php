@@ -51,7 +51,7 @@ class CartaController extends Controller
                     }
                 }),
             ],
-            'tipo'=>'required|in:Contestación,Presentación,Agradecimiento',
+            'tipo'=>'required|in:Contestación,Presentación,Agradecimiento,Iniciada',
             'asunto'=>'required|string|max:120',
             'boleta'=>'required|mimes:jpeg,png,jpg|image',
             "carta" => "required_if:tipo,==,Contestación|mimes:pdf",
@@ -120,7 +120,7 @@ class CartaController extends Controller
      */
     public function edit(Carta $carta)
     {
-        //
+        return view('cartas.edit',['carta'=>$carta]);
     }
 
     /**
@@ -128,7 +128,10 @@ class CartaController extends Controller
      */
     public function update(Request $request, Carta $carta)
     {
-        //
+        $carta->detalle=$request->detalle;
+        $carta->save();
+        Session::flash('success','Carta de '.$carta->tipo.' actualizado exitosamente.!');
+        return redirect()->route('cartas.show',$carta);
     }
 
     /**
