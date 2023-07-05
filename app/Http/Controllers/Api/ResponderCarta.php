@@ -226,7 +226,25 @@ class ResponderCarta extends Controller
                     '<p>'.$request->detalle.'</p>';
         $request['detalle']=$detalle;
         return $this->guardarCarta($request);
-        
+    }
+
+    public function responderAgradecimineto(Request $request) {
+        $request->validate([
+            'id'=>'required',
+            'imagen'=>'required',
+            'detalle'=>'required'
+        ]);
+        $detalle= '<p><b>Hola</b> '. $request->nombre_patrocinador.
+                    ', Agradezco por el valor enviado de '.$request->agradezco_por.'</p>'.
+                    '<p>Tu regalo lo voy a usar para '.$request->regalo_usar_para.'</p>'.
+                    '<p>Te cuento que '.$request->te_cuento_que.'</p>'.
+                    '<p><b>Es hora de hacer una pregunta.</b></p>'.
+                    '<p>¿ '.$request->pregunta_al_patrocinador.' ?</p>'.
+                    '<p><b>Aquí mi despedida.</b></p>'.
+                    '<p>'.$request->detalle.'</p>';
+
+        $request['detalle']=$detalle;
+        return $this->guardarCarta($request);
     }
 
     public function enviarMensaje() {

@@ -41,6 +41,7 @@ Route::post('/login', function (Request $request) {
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/listar-mis-cartas',[ResponderCarta::class,'listaCartas']);
     Route::post('/responder-carta-contestacion', [ResponderCarta::class,'responderContestacion']);
+    Route::post('/responder-carta-agradecimiento', [ResponderCarta::class,'responderAgradecimineto']);
     Route::post('/responder-carta-presentacion-menores',[ResponderCarta::class,'responderCartaPresentacionMenor'] );
     Route::post('/responder-carta-presentacion-mayores',[ResponderCarta::class,'responderCartaPresentacionMayor'] );
     Route::post('/enviar-mensaje',[ResponderCarta::class,'enviarMensaje'] );
