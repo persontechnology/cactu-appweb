@@ -2,8 +2,8 @@
     <div class="container-fluid">
         <span>&copy; {{ date('Y') }} <a href="https://persontechnology.com/" target="_blank">Person Technology</a>, Todos los derechos reservados.</span>
 
-        {{-- <ul class="nav">
-            <li class="nav-item">
+        <ul class="nav">
+            {{-- <li class="nav-item">
                 <a href="#!" class="navbar-nav-link navbar-nav-link-icon rounded">
                     <div class="d-flex align-items-center mx-md-1">
                         <i class="ph-lifebuoy"></i>
@@ -18,15 +18,15 @@
                         <span class="d-none d-md-inline-block ms-2">Docs</span>
                     </div>
                 </a>
-            </li>
+            </li> --}}
             <li class="nav-item ms-md-1">
-                <a href="#!" class="navbar-nav-link navbar-nav-link-icon text-primary bg-primary bg-opacity-10 fw-semibold rounded">
+                <a href="{{ asset('apk/cactu.apk') }}" class="navbar-nav-link navbar-nav-link-icon text-success bg-success bg-opacity-10 fw-semibold rounded">
                     <div class="d-flex align-items-center mx-md-1">
-                        <i class="ph-shopping-cart"></i>
-                        <span class="d-none d-md-inline-block ms-2">Purchase</span>
+                        <i class="ph ph-device-mobile"></i>
+                        <span class="d-none d-md-inline-block ms-2">DESCARGAR APLICACIÓN ANDROID</span>
                     </div>
                 </a>
             </li>
-        </ul> --}}
+        </ul>
     </div>
 </div>
