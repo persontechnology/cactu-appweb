@@ -19,4 +19,8 @@ class WelcomeController extends Controller
             return 'Documento no encontrado.!';
         }
     }
+
+    public function manual()  {
+        return view('manual');
+    }
 }

@@ -22,12 +22,23 @@
                     <div class="text-center mb-3">
                         <h6 class="mb-0">CACTU</h6>
                         <span class="text-muted">Corporación de Asociaciones de Cotopaxi y Tungurahua</span>
+                        
                     </div>
-
+                    <div class="text-center">
+                        @auth
+                            <div class="border-top text-center py-2 px-3">
+                                <a href="{{ route('manual') }}" class="btn btn-yellow fw-semibold w-100 my-1">
+                                    <i class="ph ph-monitor-play me-2"></i>
+                                    Manual de usuario
+                                </a>
+                            </div>
+                        @endauth
+                    </div>
                    
                 </div>
             </div>
         </form>
+        
         <!-- /unlock form -->
 
     </div>

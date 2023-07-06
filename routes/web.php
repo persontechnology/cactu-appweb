@@ -34,7 +34,10 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
+
+
 Route::get('ver-archivo-pdf-por-ninio/{id}',[WelcomeController::class,'pdfninio'])->name('verarchivopdfporninio');
+Route::get('manual-de-usuario',[WelcomeController::class,'manual'])->name('manual');
 
 
 Auth::routes(['register' => false]);

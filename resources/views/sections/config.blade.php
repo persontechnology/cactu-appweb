@@ -57,10 +57,12 @@
 
     </div>
 
+    @auth
     <div class="border-top text-center py-2 px-3">
-        <a href="https://persontechnology.com/contacto" target="_blank" class="btn btn-yellow fw-semibold w-100 my-1">
-            <i class="ph-shopping-cart me-2"></i>
-            Comprar
+        <a href="{{ route('manual') }}" class="btn btn-yellow fw-semibold w-100 my-1">
+            <i class="ph ph-monitor-play me-2"></i>
+            Manual de usuario
         </a>
     </div>
+    @endauth
 </div>
