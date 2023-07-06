@@ -15,7 +15,7 @@ class CartaPolicy
             if($user->hasRole('ADMINISTRADOR')){
                 return true;
             }else{
-                if($user->id===$carta->user_id){
+                if($user->id==$carta->user_id){
                     return true;
                 }else{
                     return false;
@@ -30,7 +30,7 @@ class CartaPolicy
             if($user->hasRole('ADMINISTRADOR')){
                 return true;
             }else{
-                if($user->id===$carta->user_id){
+                if($user->id==$carta->user_id){
                     return true;
                 }else{
                     return false;

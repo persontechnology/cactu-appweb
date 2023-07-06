@@ -16,7 +16,7 @@ class NinioPolicy
         if($user->hasRole('ADMINISTRADOR')){
             return true;
         }else{
-            if($ninio->comunidad->user_id===$user->id){
+            if($ninio->comunidad->user_id==$user->id){
                 return true;
             }else{
                 return false;
@@ -30,7 +30,7 @@ class NinioPolicy
         if($user->hasRole('ADMINISTRADOR')){
             return true;
         }else{
-            if($ninio->comunidad->user_id===$user->id){
+            if($ninio->comunidad->user_id==$user->id){
                 return true;
             }else{
                 return false;
