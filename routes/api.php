@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\ResponderCarta;
+use App\Http\Controllers\SensorDataController;
 use App\Models\Carta;
 use App\Models\Ninio;
 use Carbon\Carbon;
@@ -37,6 +38,11 @@ Route::post('/login', function (Request $request) {
         return response()->json($th->getMessage());
     }
 });
+
+Route::get('/sensor-data',[SensorDataController::class,'sensorData']);
+Route::post('/sensor-data',[SensorDataController::class,'sensorData']);
+
+
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/listar-mis-cartas',[ResponderCarta::class,'listaCartas']);
