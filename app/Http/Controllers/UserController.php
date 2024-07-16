@@ -75,7 +75,7 @@ class UserController extends Controller
         $user=User::findOrFail($id);
         $data = array(
             'user' => $user,
-            'roles'=>Role::whereNotIn('name',[config('app.ROLE_ADMIN')])->get()
+            'roles'=>Role::get()
         );
 
         return view('usuarios.edit',$data);
