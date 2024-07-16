@@ -26,17 +26,17 @@ class CartaPolicy
     }
     public function eliminar(User $user, Carta $carta): bool
     {
-        if($carta->estado==='Enviado'){
-            if($user->hasRole('ADMINISTRADOR')){
+        
+        if($user->hasRole('ADMINISTRADOR')){
+            return true;
+        }else{
+            if($user->id==$carta->user_id){
                 return true;
             }else{
-                if($user->id==$carta->user_id){
-                    return true;
-                }else{
-                    return false;
-                }
+                return false;
             }
         }
+        
         return false;
     }
 

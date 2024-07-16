@@ -172,6 +172,16 @@ class CartaController extends Controller
                 if(Storage::exists($carta->archivo_pdf??'archivo_pdf.pngx')){
                     Storage::delete($carta->archivo_pdf);
                 }
+                
+                if($carta->boletas->count()>0){
+                    foreach ($carta->boletas as $boleta) {
+                        if(Storage::exists($boleta->archivo_imagen??'boleta.pngx')){
+                            Storage::delete($boleta->archivo_imagen);
+                        }
+                    }
+                }
+
+
             }
             Session::flash('success','Carta eliminado.!');
         } catch (\Throwable $th) {
