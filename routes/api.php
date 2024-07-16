@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\ResponderCarta;
 use App\Http\Controllers\SensorDataController;
+use App\Http\Controllers\WelcomeController;
 use App\Models\Carta;
 use App\Models\Ninio;
 use Carbon\Carbon;
@@ -39,9 +40,9 @@ Route::post('/login', function (Request $request) {
     }
 });
 
-Route::get('/sensor-data',[SensorDataController::class,'sensorData']);
-Route::post('/sensor-data',[SensorDataController::class,'sensorData']);
 
+Route::get('ver-archivo-pdf-por-ninio/{id}',[WelcomeController::class,'pdfninio'])->name('verarchivopdfporninio');
+Route::get('dcpdf/{id}',[WelcomeController::class,'descargarCartaPdf'])->name('descargarCartaPdf');
 
 
 Route::middleware(['auth:sanctum'])->group(function () {
@@ -52,6 +53,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/responder-carta-presentacion-menores',[ResponderCarta::class,'responderCartaPresentacionMenor'] );
     Route::post('/responder-carta-presentacion-mayores',[ResponderCarta::class,'responderCartaPresentacionMayor'] );
     Route::post('/enviar-mensaje',[ResponderCarta::class,'enviarMensaje'] );
+    Route::post('/eliminar-carta',[ResponderCarta::class,'eliminarCarta'] );
+    
 });
 
 

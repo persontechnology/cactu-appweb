@@ -36,7 +36,7 @@ Route::get('/', function () {
 
 
 
-Route::get('ver-archivo-pdf-por-ninio/{id}',[WelcomeController::class,'pdfninio'])->name('verarchivopdfporninio');
+
 Route::get('manual-de-usuario',[WelcomeController::class,'manual'])->name('manual');
 
 
@@ -63,7 +63,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('cartas', CartaController::class);
     Route::get('cartas-ver-carta-pdf/{id}', [CartaController::class, 'verPDF'])->name('cartas.ver-carta-pdf');
     Route::get('cartas-ver-archivo/{id}/{tipo}', [CartaController::class, 'verArchivo'])->name('cartas.ver-archivo');
-    Route::get('cartas.documentos/{id}', [CartaController::class, 'documentos'])->name('cartas.documentos');
+    Route::get('cartas-documentos/{id}', [CartaController::class, 'documentos'])->name('cartas.documentos');
+    Route::get('cartas-descargar-pdf/{id}', [CartaController::class, 'descargarPdf'])->name('cartas.descargarPdf');
+    
+    // boletas
+    Route::get('ver-boleta-archivo-imagen/{id}', [CartaController::class, 'verBoletaArchivoImagen'])->name('verBoletaArchivoImagen');
+    
     
     
 

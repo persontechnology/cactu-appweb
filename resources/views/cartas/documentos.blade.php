@@ -6,17 +6,25 @@
 
 @section('content')
   <div class="row">
-    @if ($carta->archivo_imagen)
+    @if ($carta->boletas->count()>0)
+
+    @php
+        $i=1;
+    @endphp
+    @foreach ($carta->boletas as $boleta)
+    
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <strong>IMAGEN DE LA BOLETA</strong>
+                    <strong>BOLETA {{ $i++ }}</strong>
                 </div>
                 <div class="card-img-actions" >
-                    <img class="card-img-top img-fluid" src="{{ route('cartas.ver-archivo',[$carta->id,'archivo_imagen']) }}" alt="">
+                    <img class="card-img-top img-fluid" src="{{ route('verBoletaArchivoImagen',$boleta->id) }}" alt="">
                 </div>
             </div>
         </div>
+
+    @endforeach
     @endif
     
 

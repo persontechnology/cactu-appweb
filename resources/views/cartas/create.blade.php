@@ -65,7 +65,7 @@
             <div class="col-md-6 mb1" id="contenedor-boleta">
                 <p>Seleccione la imagen de la boleta.</p>
                 <div class="file-loading">
-                    <input id="boleta" name="boleta" type="file" accept="image/png, image/jpeg, image/jpeg" required>
+                    <input id="boleta" multiple name="boleta[]" type="file" accept="image/png, image/jpeg, image/jpeg" required>
                 </div>
             </div>
             <div class="col-md-6 mb1" id="contenedor-carta">
@@ -173,7 +173,7 @@
             maxImageWidth: 520,
             maxImageHeight: 340,
             resizePreference: 'height',
-            maxFileCount: 1,
+            // maxFileCount: 1,
             resizeImage: true,
             resizeIfSizeMoreThan: 1000,
             language: "es",

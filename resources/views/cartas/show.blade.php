@@ -14,6 +14,9 @@
 
 @section('content')
 <div class="card">
+  <div class="card-header">
+    Carta de {{ $carta->tipo }}, del Niñ@: {{ $carta->ninio->nombres_completos }}
+  </div>
     <div class="card-body">
         <div class="table-responsive">
             <div class="ratio ratio-16x9">
@@ -24,14 +27,6 @@
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   <strong>{{ $carta->ninio->nombres_completos }} no pertenece a usd, o no responde la carta de {{ $carta->tipo }}.</strong> 
                 </div>
-                
-                <script>
-                  var alertList = document.querySelectorAll('.alert');
-                  alertList.forEach(function (alert) {
-                    new bootstrap.Alert(alert)
-                  })
-                </script>
-                
                 @endcan
                 
               </div>

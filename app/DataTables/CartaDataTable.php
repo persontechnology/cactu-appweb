@@ -27,6 +27,14 @@ class CartaDataTable extends DataTable
             ->addColumn('action', function($c){
                 return view('cartas.action',['c'=>$c])->render();
             })
+            ->editColumn('numero_child',function($c){
+                return $c->ninio->numero_child;
+            })
+            ->filterColumn('numero_child', function($query, $keyword) {
+                $query->whereHas('ninio', function($query) use ($keyword) {
+                    $query->whereRaw("numero_child like ?", ["%{$keyword}%"]);
+                });
+            })
             ->setRowClass('{{ $estado == "Enviado" ? "fw-bold" : "" }}')
            
             ->editColumn('ninio_id',function($c){
@@ -93,6 +101,7 @@ class CartaDataTable extends DataTable
                   ->width(60)
                   ->title('Acción')
                   ->addClass('text-center'),
+            Column::computed('numero_child')->title('Número Child')->searchable(true),
             Column::make('ninio_id')->title('Niño'),
             Column::make('asunto'),
             Column::make('tipo')->title('Tipo de carta'),

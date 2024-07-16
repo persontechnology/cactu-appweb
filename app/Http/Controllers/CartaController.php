@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DataTables\Carta\NinioDataTable;
 use App\DataTables\CartaDataTable;
+use App\Models\Boleta;
 use App\Models\Carta;
 use App\Models\Ninio;
 use App\Notifications\EnviarNotificacionCartaNueva;
@@ -53,7 +54,8 @@ class CartaController extends Controller
             ],
             'tipo'=>'required|in:Contestación,Presentación,Agradecimiento,Iniciada',
             'asunto'=>'required|string|max:120',
-            'boleta'=>'required|mimes:jpeg,png,jpg|image',
+            'boleta' => 'required',
+            'boleta.*' => 'image|mimes:jpeg,png,jpg|max:2050',
             "carta" => "required_if:tipo,==,Contestación|mimes:pdf",
             
         ]);
@@ -69,13 +71,32 @@ class CartaController extends Controller
             $carta->comunidad_id=$ninio->comunidad_id;
             $carta->save();
             
+            // if ($request->hasFile('boleta')) {
+            //     $path_boleta = Storage::putFileAs(
+            //         'public/cartas/archivo_imagen', $request->file('boleta'), $carta->id.'.'.$request->file('boleta')->getClientOriginalExtension()
+            //     );
+            //     $carta->archivo_imagen=$path_boleta;
+            //     $carta->save();
+            // }
+
+
             if ($request->hasFile('boleta')) {
-                $path_boleta = Storage::putFileAs(
-                    'public/cartas/archivo_imagen', $request->file('boleta'), $carta->id.'.'.$request->file('boleta')->getClientOriginalExtension()
-                );
-                $carta->archivo_imagen=$path_boleta;
-                $carta->save();
+                foreach ($request->file('boleta') as $file) {
+                    $boleta = new Boleta();
+                    $boleta->carta_id = $carta->id;
+                    $boleta->save();
+                    
+                    $path_boleta = Storage::putFileAs(
+                        'public/cartas/boletas', $file, $boleta->id .'.' . $file->getClientOriginalExtension()
+                    );
+                    $boleta->archivo_imagen=$path_boleta;
+                    $boleta->save();
+                }
             }
+
+
+
+
 
             if ($request->hasFile('carta')) {
                 $path_carta = Storage::putFileAs(
@@ -84,6 +105,8 @@ class CartaController extends Controller
                 $carta->archivo_pdf=$path_carta;
                 $carta->save();
             }
+
+
             DB::commit();
            
             $this->enviarNotificacion($carta);
@@ -158,6 +181,7 @@ class CartaController extends Controller
     }
 
     public function verPDF($id) {
+        
         $carta=Carta::findOrFail($id);
         $title='CARTA DE '.$carta->ninio->nombres_completos;
         $data = array(
@@ -165,7 +189,14 @@ class CartaController extends Controller
             'title'=>$title
         );
         
-        $pdf = PDF::loadView('cartas.verpdf', $data) ->setOption('margin-top', 5) ->setOption('margin-bottom', 1);
+        $pdf = PDF::loadView('cartas.verpdf', $data)
+        // ->setOption('page-size', 'A4')
+        // ->setOption('orientation', 'Portrait')
+        // ->setOption('margin-top', '0mm')
+        // ->setOption('margin-right', '0mm')
+        // ->setOption('margin-bottom', '0mm')
+        // ->setOption('margin-left', '0mm')
+        ;
         return $pdf->inline($title );
     }
     
@@ -191,9 +222,26 @@ class CartaController extends Controller
         }
     }
 
+    public function verBoletaArchivoImagen($idBoleta) {
+        $boleta=Boleta::findOrFail($idBoleta);
+        return Storage::get($boleta->archivo_imagen);
+    }
+
     public function documentos($id) {
         $carta=Carta::findOrFail($id);
         return view('cartas.documentos',['carta'=>$carta]);
+    }
+
+    public function descargarPdf($id) {
+        $carta=Carta::findOrFail($id);
+        $title='CARTA DE '.$carta->ninio->nombres_completos;
+        $data = array(
+            'carta'=>$carta,
+            'title'=>$title
+        );
+        
+        $pdf = PDF::loadView('cartas.verpdf', $data) ->setOption('margin-top', 5) ->setOption('margin-bottom', 1);
+        return $pdf->download($title );
     }
 
 }

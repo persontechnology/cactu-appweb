@@ -50,7 +50,7 @@ class Carta extends Model
         return $this->belongsTo(Comunidad::class,'comunidad_id');
     }
 
-    
+    // archivo_imagen_ninio_link
     public function getArchivoImagenNinioLinkAttribute()
     {
         if(Storage::exists($this->archivo_imagen_ninio)){
@@ -58,6 +58,7 @@ class Carta extends Model
         }
     }
 
+    // archivo_imagen_link
     public function getArchivoImagenLinkAttribute()
     {
         if(Storage::exists($this->archivo_imagen)){
@@ -65,11 +66,19 @@ class Carta extends Model
         }
     }
     
+    // archivo_familia_ninio_link
     public function getArchivoFamiliaNinioLinkAttribute()
     {
         if(Storage::exists($this->archivo_familia_ninio)){
             return Storage::url($this->archivo_familia_ninio) ;
         }
+    }
+
+    // una carta tiene boletas
+
+    public function boletas()
+    {
+        return $this->hasMany(Boleta::class);
     }
     
 

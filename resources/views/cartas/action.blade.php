@@ -10,8 +10,16 @@
                 <i class="ph ph-eye me-2"></i>
                 Ver
             </a>
+
+            <a href="{{ route('cartas.descargarPdf',$c->id) }}"  class="dropdown-item">
+                <i class="ph ph-file-pdf me-2"></i>
+                Descargar PDF
+            </a> 
+            
           @endcan
             
+        
+        
 
         <a href="{{ route('cartas.documentos',$c->id) }}"  class="dropdown-item">
             <i class="ph ph-file-search me-2"></i>
@@ -19,12 +27,12 @@
         </a> 
 
 
-            @can('eliminar', $c)
-            <a href="{{ route('cartas.destroy',$c->id) }}" data-msg="Carta de {{ $c->tipo }} de {{ $c->ninio->nombres_completos }}" onclick="event.preventDefault(); eliminar(this)" class="dropdown-item">
-                <i class="ph ph-trash me-2"></i>
-                Eliminar
-            </a>    
-            @endcan
+        {{-- @can('eliminar', $c) --}}
+        <a href="{{ route('cartas.destroy',$c->id) }}" data-msg="Carta de {{ $c->tipo }} de {{ $c->ninio->nombres_completos }}" onclick="event.preventDefault(); eliminar(this)" class="dropdown-item">
+            <i class="ph ph-trash me-2"></i>
+            Eliminar
+        </a>    
+        {{-- @endcan --}}
             
             
             

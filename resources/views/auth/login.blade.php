@@ -33,7 +33,7 @@
 
                         <div class="form-floating form-control-feedback form-control-feedback-start mb-3">
                             <div class="form-control-feedback-icon">
-                                <i class="ph-user"></i>
+                                <i class="ph ph-password"></i>
                             </div>
                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                             <label>{{ __('Password') }}</label>

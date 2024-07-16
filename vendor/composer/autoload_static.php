@@ -218,11 +218,11 @@ class ComposerStaticInit9eed0009753916bdf9dbff410b1ce13c
         ),
         'Yajra\\DataTables\\' => 
         array (
-            0 => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src',
-            1 => __DIR__ . '/..' . '/yajra/laravel-datatables-html/src',
+            0 => __DIR__ . '/..' . '/yajra/laravel-datatables-buttons/src',
+            1 => __DIR__ . '/..' . '/yajra/laravel-datatables-editor/src',
             2 => __DIR__ . '/..' . '/yajra/laravel-datatables-fractal/src',
-            3 => __DIR__ . '/..' . '/yajra/laravel-datatables-editor/src',
-            4 => __DIR__ . '/..' . '/yajra/laravel-datatables-buttons/src',
+            3 => __DIR__ . '/..' . '/yajra/laravel-datatables-html/src',
+            4 => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src',
         ),
         'Whoops\\' => 
         array (
@@ -398,8 +398,8 @@ class ComposerStaticInit9eed0009753916bdf9dbff410b1ce13c
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -630,6 +630,7 @@ class ComposerStaticInit9eed0009753916bdf9dbff410b1ce13c
         'App\\Http\\Controllers\\MisNiniosController' => __DIR__ . '/../..' . '/app/Http/Controllers/MisNiniosController.php',
         'App\\Http\\Controllers\\NinioController' => __DIR__ . '/../..' . '/app/Http/Controllers/NinioController.php',
         'App\\Http\\Controllers\\ResponderCartaController' => __DIR__ . '/../..' . '/app/Http/Controllers/ResponderCartaController.php',
+        'App\\Http\\Controllers\\SensorDataController' => __DIR__ . '/../..' . '/app/Http/Controllers/SensorDataController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Controllers\\WelcomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/WelcomeController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
