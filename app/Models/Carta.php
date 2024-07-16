@@ -53,25 +53,28 @@ class Carta extends Model
     // archivo_imagen_ninio_link
     public function getArchivoImagenNinioLinkAttribute()
     {
-        if(Storage::exists($this->archivo_imagen_ninio)){
+        if($this->archivo_imagen_ninio && Storage::exists($this->archivo_imagen_ninio)){
             return Storage::url($this->archivo_imagen_ninio) ;
         }
+        return null;
     }
 
     // archivo_imagen_link
     public function getArchivoImagenLinkAttribute()
     {
-        if(Storage::exists($this->archivo_imagen)){
+        if($this->archivo_imagen && Storage::exists($this->archivo_imagen)){
             return Storage::url($this->archivo_imagen) ;
         }
+        return null;
     }
     
     // archivo_familia_ninio_link
     public function getArchivoFamiliaNinioLinkAttribute()
     {
-        if(Storage::exists($this->archivo_familia_ninio)){
+        if($this->archivo_familia_ninio && Storage::exists($this->archivo_familia_ninio)){
             return Storage::url($this->archivo_familia_ninio) ;
         }
+        return null;
     }
 
     // una carta tiene boletas
