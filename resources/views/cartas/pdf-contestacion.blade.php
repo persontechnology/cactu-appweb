@@ -101,7 +101,7 @@
             margin: 20px;
             border: 5px solid #3fa855; /* Borde verde de 5px */
         }
-
+        
         .cuerpo table {
             width: 100%;
             border-collapse: collapse;

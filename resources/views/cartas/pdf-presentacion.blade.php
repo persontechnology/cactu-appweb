@@ -107,6 +107,37 @@
             border-style: solid;
             border-color: #cbd818 transparent transparent;
         }
+
+        /* Evitar cortes de página dentro de este contenedor */
+        .imagen_del_ninio {
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+
+        /* Estilo de borde verde para el PDF */
+        @page {
+            margin: 20px;
+            border: 5px solid #3fa855; /* Borde verde de 5px */
+        }
+        
+        .cuerpo table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .cuerpo td {
+            width: 50%; /* Dos columnas */
+            padding: 10px; /* Espacio entre las imágenes */
+        }
+
+        .cuerpo img {
+            width: 100%;
+            height: auto;
+            max-height: 200px; /* Ajusta este valor según sea necesario */
+            object-fit: contain; /* Ajusta la imagen dentro del contenedor sin recortar */
+            display: block;
+            margin: 0 auto;
+        }
     </style>
 </head>
 
@@ -175,20 +206,28 @@
             </table>
         </div>
 
-        <div class="boletas">
+        <div class="cuerpo imagen_del_ninio">
             <h4>Boletas</h4>
-            
-            @if ($carta->archivo_imagen)
-                <img width="100%" src="{{ public_path($carta->archivo_imagen_link) }}" />    
-            @endif
-
-            @if ($carta->boletas->count() > 0)
-                @foreach ($carta->boletas as $boleta)
-                    <img width="100%" src="{{ public_path($boleta->archivo_imagen_link) }}" />
-                    <br>
-                @endforeach
-            @endif
-
+            <table>
+                <tr>
+                    @if ($carta->archivo_imagen)
+                        <td>
+                            <img src="{{ public_path($carta->archivo_imagen_link) }}" />
+                        </td>
+                    @endif
+        
+                    @if ($carta->boletas->count() > 0)
+                        @foreach ($carta->boletas as $index => $boleta)
+                            <td>
+                                <img src="{{ public_path($boleta->archivo_imagen_link) }}" />
+                            </td>
+                            @if (($index + 1) % 2 == 0)
+                                </tr><tr>
+                            @endif
+                        @endforeach
+                    @endif
+                </tr>
+            </table>
         </div>
 
         <div class="provincia-img">
