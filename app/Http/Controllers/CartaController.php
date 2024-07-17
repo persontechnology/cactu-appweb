@@ -244,14 +244,14 @@ class CartaController extends Controller
 
     public function descargarPdf($id) {
         $carta=Carta::findOrFail($id);
-        $title='CARTA DE '.$carta->ninio->nombres_completos;
+        $title='CARTA DE '.$carta->ninio->nombres_completos.'.pdf';
         $data = array(
             'carta'=>$carta,
             'title'=>$title
         );
         
         $pdf = PDF::loadView('cartas.verpdf', $data) ->setOption('margin-top', 5) ->setOption('margin-bottom', 1);
-        return $pdf->download($title );
+        return $pdf->download($title);
     }
 
 }

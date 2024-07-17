@@ -27,23 +27,10 @@ class CartaDataTable extends DataTable
             ->addColumn('action', function($c){
                 return view('cartas.action',['c'=>$c])->render();
             })
-            ->editColumn('numero_child',function($c){
-                return $c->ninio->numero_child;
-            })
-            ->filterColumn('numero_child', function($query, $keyword) {
-                $query->whereHas('ninio', function($query) use ($keyword) {
-                    $query->whereRaw("numero_child like ?", ["%{$keyword}%"]);
-                });
-            })
+            
             ->setRowClass('{{ $estado == "Enviado" ? "fw-bold" : "" }}')
            
-            ->editColumn('ninio_id',function($c){
-                return $c->ninio->nombres_completos;
-                
-            })
-            ->editColumn('user_id',function($c){
-                return $c->gestor->name;
-            })
+          
             ->editColumn('asunto',function($c){
                 if($c->estado=='Enviado'){
                     return '<span class="badge bg-yellow text-black mx-2">'.$c->estado.'</span>'.$c->asunto;
@@ -58,7 +45,7 @@ class CartaDataTable extends DataTable
                     return '<small>'.$c->fecha_respondida.'</small>';
                 }
             })
-            ->rawColumns(['asunto','action','ninio_id','tipo','user_id','estado','created_at'])
+            ->rawColumns(['asunto','action','estado','created_at'])
             ->setRowId('id');
     }
 
@@ -69,9 +56,9 @@ class CartaDataTable extends DataTable
     {
         $user=Auth::user();
         if($user->hasRole('ADMINISTRADOR')){
-            return $model->newQuery()->latest();
+            return $model->newQuery()->with(['ninio','gestor'])->latest();
         }else{
-            return $model->where('user_id',$user->id)->latest();
+            return $model->where('user_id',$user->id)->with(['ninio','gestor'])->latest();
         }
         
         
@@ -101,12 +88,12 @@ class CartaDataTable extends DataTable
                   ->width(60)
                   ->title('Acción')
                   ->addClass('text-center'),
-            Column::computed('numero_child')->title('Número Child')->searchable(true),
-            Column::make('ninio_id')->title('Niño'),
+            Column::computed('ninio.numero_child')->title('Número Child')->searchable(true),
+            Column::make('ninio.nombres_completos')->title('Niño'),
             Column::make('asunto'),
             Column::make('tipo')->title('Tipo de carta'),
             // Column::make('estado'),
-            Column::make('user_id')->title('Gestor'),
+            Column::make('gestor.email')->title('Gestor'),
             Column::make('created_at')->title('Fecha'),
         ];
     }

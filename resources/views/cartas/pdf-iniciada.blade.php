@@ -117,13 +117,21 @@
                         <td style="background: url({!! public_path($carta->archivo_imagen_ninio_link) !!});
                             background-repeat: no-repeat;
                             background-size: 100% 100%;
-                            background-position: center; height: 250px;">
+                            background-position: center; 
+                            width: 50%; 
+                            height: 400px;
+                            border: 3px solid #cbd818;
+                        ">
                         </td>
                         @if ($carta->archivo_familia_ninio)
                             <td style="background: url({!! public_path($carta->archivo_familia_ninio_link) !!});
                                 background-repeat: no-repeat;
                                 background-size: 100% 100%;
-                                background-position: center; height: 250px;">
+                                background-position: center; 
+                                width: 50%; 
+                                height: 400px;
+                                border: 3px solid #cbd818;
+                            ">
                             </td>
                         @endif
                     </tr>
