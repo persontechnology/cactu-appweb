@@ -120,6 +120,7 @@
             display: block;
             margin: 0 auto;
         }
+
     </style>
 </head>
 
@@ -143,10 +144,11 @@
             <br>
             {!! $carta->detalle !!}
         </div>
-
+<center>
         <div class="cuerpo">
-            <div class="imagen_del_ninio">
-                <table>
+            <div class="imagen_del_ninio table-container" >
+                
+                <table style="width: 70%;">
                     <tr>
                         <th>Aquí está mi foto</th>
                         @if ($carta->archivo_familia_ninio)
@@ -176,9 +178,8 @@
                 </table>
             </div>
         </div>
-
+    </center>
        
-            
         <div class="cuerpo imagen_del_ninio">
             <h4>Boletas</h4>
             <table>
