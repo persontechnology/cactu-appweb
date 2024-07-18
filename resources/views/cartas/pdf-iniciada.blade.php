@@ -30,8 +30,7 @@
 
         .contenido {
             margin: 0 auto;
-            padding: 20px;
-        
+            padding: 5px;
             border-radius: 15px;
             width: 90%;
             box-sizing: border-box;
@@ -46,9 +45,8 @@
 
         .cuerpo {
             margin-top: 2em;
-            padding: 20px;
+            padding: 2px;
             background-color: rgba(255, 255, 255, 0.9);
-            
             border-radius: 15px;
             font-size: 18px;
             line-height: 1.8;
@@ -57,10 +55,9 @@
         
 
         .imagen_del_ninio {
-            margin-top: 20px;
-            padding: 20px;
+            margin-top: 5px;
+            padding: 5px;
             background-color: rgba(255, 255, 255, 0.9);
-            
             border-radius: 15px;
         }
 
@@ -83,7 +80,7 @@
 
         /* Estilo de borde verde para el PDF */
         @page {
-            margin: 20px;
+            margin: 5px;
             border: 5px solid #3fa855; /* Borde verde de 5px */
         }
         
@@ -111,8 +108,7 @@
 <body>
     <div class="contenedor">
         <br>
-        <br>
-        <br>
+        
         <div class="contenido">
             
             <div class="fecha">
