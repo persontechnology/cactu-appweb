@@ -160,7 +160,7 @@
                             background-size: 100% 100%;
                             background-position: center; 
                             width: 50%; 
-                            height: 450px;
+                            height: 550px;
                         "></td>
                         @if ($carta->archivo_familia_ninio)
                             <td style="
@@ -169,7 +169,7 @@
                                 background-size: 100% 100%;
                                 background-position: center; 
                                 width: 50%; 
-                                height: 450px;
+                                height: 550px;
                             "></td>
                         @endif
                     </tr>
