@@ -21,7 +21,7 @@ class WelcomeController extends Controller
 
     public function descargarCartaPdf($id) {
         $carta=Carta::findOrFail($id);
-        $title='CARTA DE '.$carta->ninio->nombres_completos;
+        $title='CARTA DE '.$carta->ninio->nombres_completos.'.pdf';
         $data = array(
             'carta'=>$carta,
             'title'=>$title
