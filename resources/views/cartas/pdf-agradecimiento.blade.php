@@ -9,7 +9,7 @@
 
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Comic Sans MS', 'Comic Sans', cursive;
         }
 
         .contenedor {

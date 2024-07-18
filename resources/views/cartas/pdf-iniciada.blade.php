@@ -9,11 +9,6 @@
     <style>
         body {
             font-family: 'Comic Sans MS', 'Comic Sans', cursive;
-            font-size: 1.5em;
-            background-color: #f0f8ff;
-            color: #333;
-            line-height: 1.6;
-            padding: 20px;
         }
 
         .contenedor {

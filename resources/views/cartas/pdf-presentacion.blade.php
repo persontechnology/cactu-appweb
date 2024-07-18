@@ -10,7 +10,6 @@
         
         body {
             font-family: 'Comic Sans MS', 'Comic Sans', cursive;
-            font-size: 1.5em;
         }
 
         .contenedor {

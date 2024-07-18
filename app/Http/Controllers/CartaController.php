@@ -193,7 +193,7 @@ class CartaController extends Controller
     public function verPDF($id) {
         
         $carta=Carta::findOrFail($id);
-        $title='CARTA DE '.$carta->ninio->nombres_completos;
+        $title='CARTA DE '.$carta->ninio->nombres_completos.'.pdf';
         $data = array(
             'carta'=>$carta,
             'title'=>$title
