@@ -148,9 +148,9 @@
             <div class="imagen_del_ninio">
                 <table>
                     <tr>
-                        <th>ESTE SOY YO</th>
+                        <th>Aquí está mi foto</th>
                         @if ($carta->archivo_familia_ninio)
-                            <th>ESTA ES MI FAMILIA</th>
+                            <th>Esta es mi familia</th>
                         @endif
                     </tr>
                     <tr>

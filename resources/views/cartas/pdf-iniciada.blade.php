@@ -48,21 +48,19 @@
             margin-top: 2em;
             padding: 20px;
             background-color: rgba(255, 255, 255, 0.9);
-            border: 3px solid #18b2ce;
+            
             border-radius: 15px;
             font-size: 18px;
             line-height: 1.8;
         }
 
-        .cuerpo h4 {
-            color: #18b2ce;
-        }
+        
 
         .imagen_del_ninio {
             margin-top: 20px;
             padding: 20px;
             background-color: rgba(255, 255, 255, 0.9);
-            border: 3px solid #18b2ce;
+            
             border-radius: 15px;
         }
 
@@ -70,11 +68,7 @@
             width: 100%;
         }
 
-        .imagen_del_ninio hr {
-            border: none;
-            border-top: 3px solid #18b2ce;
-            margin: 20px 0;
-        }
+       
 
         .imagen_del_ninio p {
             font-size: 16px;
@@ -139,9 +133,9 @@
             <div class="imagen_del_ninio">
                 <table style="width: 100%;">
                     <tr>
-                        <th>ESTE SOY YO</th>
+                        <th>Aquí está mi foto</th>
                         @if ($carta->archivo_familia_ninio)
-                            <th>ESTA ES MI FAMILIA</th>
+                            <th>Esta es mi familia</th>
                         @endif
                     </tr>
                     <tr>
@@ -170,31 +164,31 @@
             </div>
 
             <div class="cuerpo imagen_del_ninio">
-            <h4>Boletas</h4>
-            <table>
-                <tr>
-                    @if ($carta->archivo_imagen)
-                        <td>
-                            <img src="{{ public_path($carta->archivo_imagen_link) }}" />
-                        </td>
-                    @endif
-        
-                    @if ($carta->boletas->count() > 0)
-                        @foreach ($carta->boletas as $index => $boleta)
+                <h4>Boletas</h4>
+                <table>
+                    <tr>
+                        @if ($carta->archivo_imagen)
                             <td>
-                                <img src="{{ public_path($boleta->archivo_imagen_link) }}" />
+                                <img src="{{ public_path($carta->archivo_imagen_link) }}" />
                             </td>
-                            @if (($index + 1) % 2 == 0)
-                                </tr><tr>
-                            @endif
-                        @endforeach
-                    @endif
-                </tr>
-            </table>
-        </div>
+                        @endif
+            
+                        @if ($carta->boletas->count() > 0)
+                            @foreach ($carta->boletas as $index => $boleta)
+                                <td>
+                                    <img src="{{ public_path($boleta->archivo_imagen_link) }}" />
+                                </td>
+                                @if (($index + 1) % 2 == 0)
+                                    </tr><tr>
+                                @endif
+                            @endforeach
+                        @endif
+                    </tr>
+                </table>
+            </div>
 
             <div class="imagen_del_ninio">
-                <hr>
+                
                 <img style="width: 350px;" src="{{ public_path('img/cartas/ccagradecimiento.jpg') }}">
                 <p>With this letter, you will notice something is different that we are very excited
                     about. We have introduced the use of tablets and cell phones that allow children

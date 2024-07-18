@@ -165,11 +165,11 @@
             <table style="width: 100%;">
                 <tr>
                     <th>
-                        ESTE SOY YO
+                        Aquí está mi foto
                     </th>
                     @if ($carta->archivo_familia_ninio)
                         <th>
-                            ESTA ES MI FAMILIA
+                            Esta es mi familia
                         </th>
                     @endif
 
