@@ -38,7 +38,7 @@ Route::get('/', function () {
 
 
 Route::get('manual-de-usuario',[WelcomeController::class,'manual'])->name('manual');
-
+Route::get('privacidad',[WelcomeController::class,'privacidad'])->name('privacidad');
 
 Auth::routes(['register' => false]);
 

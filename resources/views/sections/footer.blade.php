@@ -3,15 +3,15 @@
         <span>&copy; {{ date('Y') }} <a href="https://persontechnology.com/" target="_blank">Person Technology</a>, Todos los derechos reservados.</span>
 
         <ul class="nav">
-            {{-- <li class="nav-item">
-                <a href="#!" class="navbar-nav-link navbar-nav-link-icon rounded">
+            <li class="nav-item">
+                <a href="{{ route('privacidad') }}" class="navbar-nav-link navbar-nav-link-icon rounded">
                     <div class="d-flex align-items-center mx-md-1">
                         <i class="ph-lifebuoy"></i>
-                        <span class="d-none d-md-inline-block ms-2">Support</span>
+                        <span class="d-none d-md-inline-block ms-2">Privacidad</span>
                     </div>
                 </a>
             </li>
-            <li class="nav-item ms-md-1">
+            {{-- <li class="nav-item ms-md-1">
                 <a href="#!" class="navbar-nav-link navbar-nav-link-icon rounded">
                     <div class="d-flex align-items-center mx-md-1">
                         <i class="ph-file-text"></i>

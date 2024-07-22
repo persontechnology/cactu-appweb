@@ -30,5 +30,9 @@ class WelcomeController extends Controller
         $pdf = PDF::loadView('cartas.verpdf', $data) ->setOption('margin-top', 5) ->setOption('margin-bottom', 1);
         return $pdf->download($title );
     }
+
+    public function privacidad()  {
+        return view('privacidad');
+    }
   
 }
