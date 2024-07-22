@@ -181,7 +181,7 @@
                             background-size: 100% 100%;
                             background-position: center; 
                             width: 50%; 
-                            height: 400px;
+                            height:350px;
                             border: 3px solid #cbd818;
                         ">
                             
@@ -195,7 +195,7 @@
                             background-size: 100% 100%;
                             background-position: center; 
                             width: 50%; 
-                            height: 400px;
+                            height: 350px;
                             border: 3px solid #cbd818;
                         ">
                             
