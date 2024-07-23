@@ -142,43 +142,30 @@
             <br>
             {!! $carta->detalle !!}
         </div>
-
-        <div class="cuerpo">
-            <div class="imagen_del_ninio">
-                <table>
-                    <tr>
-                        <th>Aquí está mi foto</th>
-                        @if ($carta->archivo_familia_ninio)
-                            <th>Esta es mi familia</th>
-                        @endif
-                    </tr>
-                    <tr>
-                        <td style="
-                            background-image: url({{ public_path($carta->archivo_imagen_ninio_link) }});
-                            background-repeat: no-repeat;
-                            background-size: 100% 100%;
-                            background-position: center; 
-                            width: 50%; 
-                            height: 400px;
-                            border: 3px solid #cbd818;
-                            
-                        "></td>
-                        @if ($carta->archivo_familia_ninio)
+        <center>
+            <div class="cuerpo">
+                <div class="imagen_del_ninio">
+                    <table style="width: auto;">
+                        <tr>
+                            <th>Aquí está mi foto</th>
+                        
+                        </tr>
+                        <tr>
                             <td style="
-                                background-image: url({{ public_path($carta->archivo_familia_ninio_link) }});
+                                background-image: url({{ public_path($carta->archivo_imagen_ninio_link) }});
                                 background-repeat: no-repeat;
-                                background-size: 100% 100%;
+                                background-size: contain;
+                                background-size: 300px 400px;
                                 background-position: center; 
-                                width: 50%; 
+                                width: 300px; 
                                 height: 400px;
-                                border: 3px solid #cbd818;
                             "></td>
-                        @endif
-                    </tr>
-                </table>
+                            
+                        </tr>
+                    </table>
+                </div>
             </div>
-        </div>
-
+        </center>
         <div class="cuerpo imagen_del_ninio">
             <h4>Boletas</h4>
             <table>

@@ -161,7 +161,7 @@
         </div>
 
         <div class="imagen-del-ninio" style="padding-bottom: 5px;">
-            <table style="width: 100%;">
+            <table style="width: auto;">
                 <tr>
                     <th>
                         Aquí está mi foto
@@ -178,10 +178,11 @@
                         <td style="
                             background: url({!! public_path($carta->archivo_imagen_ninio_link) !!});
                             background-repeat: no-repeat;
+                            background-size: contain;
                             background-size: 100% 100%;
                             background-position: center; 
-                            width: 50%; 
-                            height:350px;
+                            width: 400px; 
+                            height:300px;
                             border: 3px solid #cbd818;
                         ">
                             
@@ -192,10 +193,11 @@
                         <td style="
                             background: url({!! public_path($carta->archivo_familia_ninio_link) !!});
                             background-repeat: no-repeat;
+                            background-size: contain;
                             background-size: 100% 100%;
                             background-position: center; 
-                            width: 50%; 
-                            height: 350px;
+                            width: 400px; 
+                            height:300px;
                             border: 3px solid #cbd818;
                         ">
                             

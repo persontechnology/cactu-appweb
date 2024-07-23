@@ -40,20 +40,7 @@
 
         .cuerpo {
             margin-top: 2em;
-            padding: 2px;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            font-size: 18px;
-            line-height: 1.8;
-        }
-
-        
-
-        .imagen_del_ninio {
-            margin-top: 5px;
-            padding: 5px;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
+          
         }
 
         .imagen_del_ninio img {
@@ -82,6 +69,8 @@
         .cuerpo table {
             width: 100%;
             border-collapse: collapse;
+            background-color: #18b3ce;
+            
         }
 
         .cuerpo td {
@@ -110,7 +99,7 @@
                 <h3>Fecha {{ \Carbon\Carbon::parse($carta->fecha_respuesta)->format('d/M/Y') }}</h3>
             </div>
 
-            <div class="cuerpso">
+            <div class="cuerpo">
                 <table style="background-color: #18b2ce; width: 100%;">
                     <tr>
                         <th>N° child de niño: {{ $carta->ninio->numero_child }}</th>
@@ -121,38 +110,28 @@
                 {!! $carta->detalle !!}
             </div>
 
-            <div class="imagen_del_ninio">
-                <table style="width: 100%;">
-                    <tr>
-                        <th>Aquí está mi foto</th>
-                        @if ($carta->archivo_familia_ninio)
-                            <th>Esta es mi familia</th>
-                        @endif
-                    </tr>
-                    <tr>
-                        <td style="background: url({!! public_path($carta->archivo_imagen_ninio_link) !!});
-                            background-repeat: no-repeat;
-                            background-size: 100% 100%;
-                            background-position: center; 
-                            width: 50%; 
-                            height: 400px;
-                            border: 3px solid #cbd818;
-                        ">
-                        </td>
-                        @if ($carta->archivo_familia_ninio)
-                            <td style="background: url({!! public_path($carta->archivo_familia_ninio_link) !!});
-                                background-repeat: no-repeat;
-                                background-size: 100% 100%;
-                                background-position: center; 
-                                width: 50%; 
-                                height: 400px;
-                                border: 3px solid #cbd818;
-                            ">
-                            </td>
-                        @endif
-                    </tr>
-                </table>
-            </div>
+            <center>
+                <div class="cuerpo">
+                    <div class="imagen_del_ninio">
+                        <table style="width: auto;">
+                            <tr>
+                                <th>Aquí está mi foto</th>
+                            </tr>
+                            <tr>
+                                <td style="background: url({!! public_path($carta->archivo_imagen_ninio_link) !!});
+                                    background-repeat: no-repeat;
+                                    background-size: contain;
+                                    background-size: 300px 400px;
+                                    background-position: center; 
+                                    width: 300px; 
+                                    height: 400px;
+                                ">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </center>
 
             <div class="cuerpo imagen_del_ninio">
                 <h4>Boletas</h4>
