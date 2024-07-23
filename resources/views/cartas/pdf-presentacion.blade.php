@@ -197,7 +197,7 @@
                             background-size: 100% 100%;
                             background-position: center; 
                             width: 400px; 
-                            height:300px;
+                            height:500px;
                             border: 3px solid #cbd818;
                         ">
                             
