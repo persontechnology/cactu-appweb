@@ -33,6 +33,7 @@ final class XLSX implements EscaperInterface
         $this->initIfNeeded();
 
         $escapedString = $this->escapeControlCharacters($string);
+
         // @NOTE: Using ENT_QUOTES as XML entities ('<', '>', '&') as well as
         //        single/double quotes (for XML attributes) need to be encoded.
         return htmlspecialchars($escapedString, ENT_QUOTES, 'UTF-8');
@@ -106,7 +107,7 @@ final class XLSX implements EscaperInterface
             $character = \chr($charValue);
             if (1 === preg_match("/{$this->escapableControlCharactersPattern}/", $character)) {
                 $charHexValue = dechex($charValue);
-                $escapedChar = '_x'.sprintf('%04s', strtoupper($charHexValue)).'_';
+                $escapedChar = '_x'.\sprintf('%04s', strtoupper($charHexValue)).'_';
                 $controlCharactersEscapingMap[$escapedChar] = $character;
             }
         }

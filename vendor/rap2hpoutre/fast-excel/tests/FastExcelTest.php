@@ -4,6 +4,8 @@ namespace Rap2hpoutre\FastExcel\Tests;
 
 use OpenSpout\Common\Entity\Style\Color;
 use OpenSpout\Common\Entity\Style\Style;
+use OpenSpout\Common\Exception\IOException;
+use OpenSpout\Reader\XLSX\Options;
 use Rap2hpoutre\FastExcel\FastExcel;
 use Rap2hpoutre\FastExcel\SheetCollection;
 
@@ -12,6 +14,31 @@ use Rap2hpoutre\FastExcel\SheetCollection;
  */
 class FastExcelTest extends TestCase
 {
+    /**
+     * @throws IOException
+     * @throws \OpenSpout\Writer\Exception\WriterNotOpenedException
+     * @throws \OpenSpout\Reader\Exception\ReaderNotOpenedException
+     * @throws \OpenSpout\Common\Exception\UnsupportedTypeException
+     * @throws \OpenSpout\Common\Exception\InvalidArgumentException
+     */
+    public function testExportXlsxWithDates()
+    {
+        $collection = collect([
+            ['col1' => new \DateTimeImmutable('1980-09-18 00:00:00.000000')],
+            ['col1' => new \DateTimeImmutable('2018-07-02 00:00:00.000000')],
+        ]);
+
+        $file = __DIR__.'/test-dates-export.xlsx';
+        (new FastExcel(clone $collection))
+            ->setColumnStyles([
+                0 => (new Style())->setFormat('mm/dd/yyyy'),
+            ])
+            ->export($file);
+
+        $this->assertEquals($collection, (new FastExcel())->import($file));
+        unlink($file);
+    }
+
     /**
      * @throws \OpenSpout\Common\Exception\IOException
      * @throws \OpenSpout\Common\Exception\UnsupportedTypeException
@@ -218,5 +245,34 @@ class FastExcelTest extends TestCase
         $this->assertEquals($original_collection, (new FastExcel())->import($file));
 
         unlink($file);
+    }
+
+    /**
+     * @throws \OpenSpout\Common\Exception\IOException
+     * @throws \OpenSpout\Common\Exception\UnsupportedTypeException
+     * @throws \OpenSpout\Reader\Exception\ReaderNotOpenedException
+     */
+    public function testImportXlsxWithCustomDateOption()
+    {
+        // Default options, dates will end parsed
+        $collection = (new FastExcel())->import(__DIR__.'/test-dates.xlsx');
+
+        $this->assertEquals(collect([
+            ['col1' => new \DateTimeImmutable('2022-01-02 00:00:00.000000')],
+            ['col1' => new \DateTimeImmutable('2022-01-03 00:00:00.000000')],
+        ]), $collection);
+
+        $collection = (new FastExcel())
+            ->configureOptionsUsing(function ($options) {
+                if ($options instanceof Options) {
+                    $options->SHOULD_FORMAT_DATES = true;
+                }
+            })
+            ->import(__DIR__.'/test-dates.xlsx');
+
+        $this->assertEquals(collect([
+            ['col1' => '1/2/2022'],
+            ['col1' => '1/3/2022'],
+        ]), $collection);
     }
 }

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace OpenSpout\Writer\XLSX\Manager;
 
-use OpenSpout\Writer\Common\Entity\Sheet;
 use OpenSpout\Writer\Common\Entity\Workbook;
 use OpenSpout\Writer\Common\Manager\AbstractWorkbookManager;
 use OpenSpout\Writer\Common\Manager\Style\StyleMerger;
@@ -76,7 +75,7 @@ final class WorkbookManager extends AbstractWorkbookManager
             ->createContentFiles($this->options, $worksheets)
             ->deleteWorksheetTempFolder()
             ->createContentTypesFile($worksheets)
-            ->createWorkbookFile($worksheets)
+            ->createWorkbookFile($this->options, $worksheets)
             ->createWorkbookRelsFile($worksheets)
             ->createWorksheetRelsFiles($worksheets)
             ->createStylesFile($this->styleManager)

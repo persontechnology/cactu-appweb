@@ -1,6 +1,6 @@
 <div class="navbar navbar-sm navbar-footer border-top">
     <div class="container-fluid">
-        <span>&copy; {{ date('Y') }} <a href="https://persontechnology.com/" target="_blank">Person Technology</a>, Todos los derechos reservados.</span>
+        <span>&copy; {{ date('Y') }} <a href="https://persontechnology.net/" target="_blank">Person Technology</a>, Todos los derechos reservados.</span>
 
         <ul class="nav">
             <li class="nav-item">

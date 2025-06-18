@@ -2,14 +2,15 @@
 
 namespace Rap2hpoutre\FastExcel;
 
+use DateTimeInterface;
 use Generator;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
 use OpenSpout\Common\Entity\Row;
 use OpenSpout\Common\Entity\Style\Style;
+use OpenSpout\Writer\Common\AbstractOptions;
 use OpenSpout\Writer\Common\Creator\WriterEntityFactory;
-use OpenSpout\Writer\XLSX\Writer;
 
 /**
  * Trait Exportable.
@@ -26,12 +27,23 @@ trait Exportable
     private $header_style;
     private $rows_style;
 
+    /** @var Style[] */
+    private $column_styles = [];
+
     /**
-     * @param \OpenSpout\Reader\ReaderInterface|\OpenSpout\Writer\WriterInterface $reader_or_writer
+     * @param AbstractOptions $options
      *
      * @return mixed
      */
-    abstract protected function setOptions(&$reader_or_writer);
+    abstract protected function setOptions(&$options);
+
+    /** @param Style[] $styles */
+    public function setColumnStyles($styles): static
+    {
+        $this->column_styles = $styles;
+
+        return $this;
+    }
 
     /**
      * @param string        $path
@@ -52,7 +64,7 @@ trait Exportable
     }
 
     /**
-     * @param $path
+     * @param               $path
      * @param callable|null $callback
      *
      * @throws \OpenSpout\Common\Exception\InvalidArgumentException
@@ -67,7 +79,7 @@ trait Exportable
         if (method_exists(response(), 'streamDownload')) {
             return response()->streamDownload(function () use ($path, $callback) {
                 self::exportOrDownload($path, 'openToBrowser', $callback);
-            });
+            }, $path);
         }
         self::exportOrDownload($path, 'openToBrowser', $callback);
 
@@ -75,7 +87,7 @@ trait Exportable
     }
 
     /**
-     * @param $path
+     * @param               $path
      * @param string        $function
      * @param callable|null $callback
      *
@@ -182,19 +194,19 @@ trait Exportable
         $all_rows = $collection->map(function ($value) {
             return Row::fromValues($value);
         })->toArray();
-        if ($this->rows_style) {
-            $this->addRowsWithStyle($writer, $all_rows, $this->rows_style);
+        if ($this->rows_style || count($this->column_styles)) {
+            $this->addRowsWithStyle($writer, $all_rows, $this->rows_style, $this->column_styles);
         } else {
             $writer->addRows($all_rows);
         }
     }
 
-    private function addRowsWithStyle($writer, $all_rows, $rows_style)
+    private function addRowsWithStyle($writer, $all_rows, $rows_style, $column_styles)
     {
         $styled_rows = [];
         // Style rows one by one
         foreach ($all_rows as $row) {
-            $styled_rows[] = Row::fromValues($row->toArray(), $rows_style);
+            $styled_rows[] = $this->createRow($row->toArray(), $rows_style, $column_styles);
         }
         $writer->addRows($styled_rows);
     }
@@ -215,7 +227,7 @@ trait Exportable
                 $this->writeHeader($writer, $item);
             }
             // Write rows (one by one).
-            $writer->addRow(Row::fromValues($item->toArray(), $this->rows_style));
+            $writer->addRow($this->createRow($item->toArray(), $this->rows_style, $this->column_styles));
         }
     }
 
@@ -236,7 +248,7 @@ trait Exportable
         }
 
         $keys = array_keys(is_array($first_row) ? $first_row : $first_row->toArray());
-        $writer->addRow(Row::fromValues($keys, $this->header_style));
+        $writer->addRow($this->createRow($keys, $this->header_style));
 //        $writer->addRow(WriterEntityFactory::createRowFromArray($keys, $this->header_style));
     }
 
@@ -280,7 +292,7 @@ trait Exportable
         return collect($data)->map(function ($value) {
             return is_null($value) ? (string) $value : $value;
         })->filter(function ($value) {
-            return is_string($value) || is_int($value) || is_float($value);
+            return is_string($value) || is_int($value) || is_float($value) || $value instanceof DateTimeInterface;
         });
     }
 
@@ -306,5 +318,15 @@ trait Exportable
         $this->rows_style = $style;
 
         return $this;
+    }
+
+    /**
+     * Create openspout row from values with optional row and cell styling.
+     *
+     * @SuppressWarnings(PHPMD.StaticAccess)
+     */
+    private function createRow(array $values = [], ?Style $rows_style = null, array $column_styles = []): Row
+    {
+        return Row::fromValuesWithStyles($values, $rows_style, $column_styles);
     }
 }

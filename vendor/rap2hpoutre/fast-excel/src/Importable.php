@@ -4,7 +4,9 @@ namespace Rap2hpoutre\FastExcel;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+use OpenSpout\Common\Entity\Cell;
 use OpenSpout\Reader\SheetInterface;
+use OpenSpout\Writer\Common\AbstractOptions;
 
 /**
  * Trait Importable.
@@ -21,11 +23,11 @@ trait Importable
     private $sheet_number = 1;
 
     /**
-     * @param \OpenSpout\Reader\ReaderInterface|\OpenSpout\Writer\WriterInterface $reader_or_writer
+     * @param AbstractOptions $options
      *
      * @return mixed
      */
-    abstract protected function setOptions(&$reader_or_writer);
+    abstract protected function setOptions(&$options);
 
     /**
      * @param string        $path
@@ -147,7 +149,13 @@ trait Importable
         $count_header = 0;
 
         foreach ($sheet->getRowIterator() as $k => $rowAsObject) {
-            $row = $rowAsObject->toArray();
+            $row = array_map(function (Cell $cell) {
+                return match (true) {
+                    $cell instanceof Cell\FormulaCell => $cell->getComputedValue(),
+                    default                           => $cell->getValue(),
+                };
+            }, $rowAsObject->getCells());
+
             if ($k >= $this->start_row) {
                 if ($this->with_header) {
                     if ($k == $this->start_row) {

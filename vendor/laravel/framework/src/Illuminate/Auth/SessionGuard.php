@@ -123,8 +123,8 @@ class SessionGuard implements StatefulGuard, SupportsBasicAuth
     public function __construct($name,
                                 UserProvider $provider,
                                 Session $session,
-                                Request $request = null,
-                                Timebox $timebox = null)
+                                ?Request $request = null,
+                                ?Timebox $timebox = null)
     {
         $this->name = $name;
         $this->session = $session;
@@ -171,10 +171,6 @@ class SessionGuard implements StatefulGuard, SupportsBasicAuth
 
                 $this->fireLoginEvent($this->user, true);
             }
-        }
-
-        if (is_null($this->user)) {
-            $this->clearUserDataFromStorage();
         }
 
         return $this->user;
@@ -918,7 +914,7 @@ class SessionGuard implements StatefulGuard, SupportsBasicAuth
      * Set the current user.
      *
      * @param  \Illuminate\Contracts\Auth\Authenticatable  $user
-     * @return void
+     * @return $this
      */
     public function setUser(AuthenticatableContract $user)
     {

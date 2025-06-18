@@ -94,7 +94,7 @@
                 <h2>Contacto</h2>
                 <p>Si tiene alguna pregunta sobre esta Política de Privacidad, por favor, póngase en contacto con nosotros en:</p>
                 <p>
-                    Correo electrónico: <a href="mailto:info@persontechnologys.com">info@persontechnologys.com</a><br>
+                    Correo electrónico: <a href="mailto:info@persontechnology.net">info@persontechnology.net</a><br>
                     Empresa: Person Technology<br>
                     Dirección: Salcedo - Ecuador, 9 de octubre y 24 de mayo frente a COAC CACPECO
                 </p>
